@@ -1,0 +1,217 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 1,
+    "color": "#000000"
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT1",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Eugh… hff.." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT2",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT3",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT4",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Oh dear god- Tanner?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT5",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Are you alright?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT6",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "H-Hi.. I'm fine..This.. weird ache in my chest is gone now, so that's great-" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT7",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT8",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "So have I. Heh.. I'm so sorry for earlier.. and all those years ago.. I should've saved you sooner.." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT9",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT10",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "It's okay.. Thanks sis." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT11",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bap" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT12",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Oopsie-! I almost forgot, Thank you so much BF! We finally have a chance to be alive again!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT13",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT14",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Well, looks like the noise we made has attracted some people!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT15",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep skebepbo!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT16",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Well, we have an audience now." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT17",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "How about one last song? It would be our pleasure." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT18",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT19",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Fantastic!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT20",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "W-wait. Do we still have to share our mics? It was way easier to do that when we were just... ghosts-" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT21",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Oh! Ya need a mic?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT22",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "I got a spare!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT23",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Would ya look at that! Thanks gal!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT24",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Well, are we ready?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT25",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "It's showtime!" ]
+    }
+  ]
+}

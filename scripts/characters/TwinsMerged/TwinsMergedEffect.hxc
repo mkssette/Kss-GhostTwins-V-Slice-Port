@@ -1,0 +1,68 @@
+import funkin.play.character.SparrowCharacter;
+import funkin.play.PlayState;
+import funkin.modding.events.ScriptEvent;
+import funkin.modding.events.HitNoteScriptEvent;
+import flixel.FlxSprite;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
+import flixel.tweens.FlxEase;
+import flixel.FlxG;
+
+class TwinsMergedEffect extends SparrowCharacter {
+	
+	var trailAlpha:Float = 0.4;
+
+	var trailDuration:Float = 0.50;
+
+	var trailInterval:Float = 0.05;
+
+	var trailTimer:Float = 0;
+
+	function new() {
+		super('TwinsMerged');
+	}
+	
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+
+		if (alpha == 0 || !visible) return;
+
+		trailTimer += elapsed;
+		if (trailTimer >= trailInterval) {
+			createGhostTrail();
+			trailTimer = 0;
+		}
+	}
+
+	function createGhostTrail() {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+
+		var ghost:FlxSprite = new FlxSprite(x, y);
+		
+		ghost.frames = frames;
+		ghost.animation.frameIndex = animation.frameIndex;
+		
+		ghost.scale.set(scale.x, scale.y);
+		ghost.angle = angle;
+		ghost.flipX = flipX;
+		ghost.flipY = flipY;
+		ghost.offset.set(offset.x, offset.y);
+		ghost.scrollFactor.set(scrollFactor.x, scrollFactor.y);
+		ghost.antialiasing = antialiasing;
+		
+		ghost.alpha = trailAlpha;
+		
+		ghost.x -= 5;
+		
+		ghost.zIndex = zIndex - 1;
+		PlayState.instance.currentStage.add(ghost);
+
+		FlxTween.tween(ghost, {alpha: 0, x: ghost.x - 10}, trailDuration, {
+			ease: FlxEase.quadOut,
+			onComplete: function(twn:FlxTween) {
+				ghost.destroy();
+			}
+		});
+	}
+}

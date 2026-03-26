@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "name": "Twins Christmas",
+  "assetPath": "dialogue/yuletides/twinsxmas-speakers",
+  "scale": 0.6,
+  "offsets": [-120, 75.1],
+  "animations": [
+    {
+      "name": "tail-tanner",
+      "prefix": "hahatannerhasatail",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "happy-marie",
+      "prefix": "mariehappy",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "indubitably-marie",
+      "prefix": "marieindubitably",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "oh-marie",
+      "prefix": "marieoh",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "short-marie",
+      "prefix": "marieyoureshort",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+  "name": "merry-marie",
+  "prefix": "merrymarie",
+  "frameRate": 24,
+  "looped": false
+},
+{
+  "name": "happy-tanner",
+  "prefix": "tannerhappy",
+  "frameRate": 24,
+  "looped": false
+},
+{
+  "name": "hmm-tanner",
+  "prefix": "tannerhmm",
+  "frameRate": 24,
+  "looped": false
+},
+{
+  "name": "oh-tanner",
+  "prefix": "tanneroh",
+  "frameRate": 24,
+  "looped": false
+}
+  ]
+}

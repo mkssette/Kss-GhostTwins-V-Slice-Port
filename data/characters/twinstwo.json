@@ -1,0 +1,326 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "TwinsTwo",
+	"cameraOffsets": [
+		0,
+		0
+	],
+	"flipX": false,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"singTime": 8,
+	"flipY": false,
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"flipX": false,
+		"id": "twinstwo"
+	},
+	"assetPath": "characters/twinstwo",
+	"generatedBy": "Nova Character Editor v3.0.1",
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinIdle",
+			"name": "idle",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinRight",
+			"name": "singLEFT",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinDown",
+			"name": "singDOWN",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinUp",
+			"name": "singUP",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinLeft",
+			"name": "singRIGHT",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinRight",
+			"name": "singLEFT-hold",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinDown",
+			"name": "singDOWN-hold",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinUp",
+			"name": "singUP-hold",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinLeft",
+			"name": "singRIGHT-hold",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": null
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinsGoopIdle",
+			"name": "idle-alt",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinsGoopRight",
+			"name": "singLEFT-alt",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinsGoopDown",
+			"name": "singDOWN-alt",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinsGoopUp",
+			"name": "singUP-alt",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [],
+			"prefix": "AngyTwinsGoopLeft",
+			"name": "singRIGHT-alt",
+			"looped": false,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinsGoopRight",
+			"name": "singLEFT-hold-alt",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinsGoopDown",
+			"name": "singDOWN-hold-alt",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinsGoopUp",
+			"name": "singUP-hold-alt",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "AngyTwinsGoopLeft",
+			"name": "singRIGHT-hold-alt",
+			"looped": true,
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/twinsTwoGoop"
+		}
+	]
+}

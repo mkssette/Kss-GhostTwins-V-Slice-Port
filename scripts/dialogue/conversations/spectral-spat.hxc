@@ -1,0 +1,247 @@
+import funkin.play.cutscene.dialogue.Conversation;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import funkin.graphics.FunkinSprite;
+import flixel.FlxG;
+import funkin.Assets;
+import StringTools;
+
+class SpectralSpatConversation extends Conversation {
+
+  var currentVoiceLine:FunkinSound;
+  var silenceSound:FunkinSound;
+  
+  var layerBack:FunkinSprite;
+  var layerMiddle:FunkinSprite;
+  var layerFront:FunkinSprite;
+
+  var imageScale:Float = 0.35;
+  var offsetX:Float = 0;
+  var offsetY:Float = 0;
+
+  var watcherActive:Bool = false; 
+  var lastRegisteredAnim:String = "";
+
+  function new() {
+    super('spectral-spat');
+  }
+
+  override function onCreate(event) {
+    super.onCreate(event);
+
+    lastRegisteredAnim = ""; 
+    watcherActive = true;
+    
+    silenceSound = FunkinSound.load(Paths.sound('null_sound'), 0);
+
+    layerBack = new FunkinSprite(0, 0);
+    layerBack.zIndex = 10; 
+    layerBack.antialiasing = true;
+    layerBack.visible = false;
+    this.add(layerBack);
+
+    layerMiddle = new FunkinSprite(0, 0);
+    layerMiddle.zIndex = 11; 
+    layerMiddle.antialiasing = true;
+    layerMiddle.visible = false;
+    this.add(layerMiddle);
+
+    layerFront = new FunkinSprite(0, 0);
+    layerFront.zIndex = 12; 
+    layerFront.antialiasing = true;
+    layerFront.visible = false;
+    this.add(layerFront);
+    
+    this.refresh();
+
+    watcherActive = true;
+  }
+
+  override function onDialogueLine(event) {
+    super.onDialogueLine(event);
+    watcherActive = true;
+  }
+
+  override function onUpdate(event) {
+    super.onUpdate(event);
+
+    if (this.currentDialogueBox != null && this.currentDialogueBox.textDisplay != null) {
+        if (!this.currentDialogueBox.textDisplay.sounds.contains(silenceSound)) {
+            this.currentDialogueBox.textDisplay.sounds = [silenceSound];
+        }
+    }
+
+    if (!watcherActive) return;
+    if (this.currentSpeaker == null) return;
+
+    var currentAnim:String = "";
+    if (this.currentSpeaker.animation.curAnim != null) {
+        currentAnim = this.currentSpeaker.animation.curAnim.name;
+    }
+
+    if (currentAnim != "" && currentAnim != lastRegisteredAnim) {
+        trace("VIGILANTE: Nuevo dialogo detectado -> " + currentAnim);
+        lastRegisteredAnim = currentAnim;
+
+        if (this.currentSpeaker.id == "spectral-spat-speaker") {
+            configureScene(currentAnim);
+        }
+        watcherActive = false;
+    }
+  }
+
+  function configureScene(anim:String):Void {
+    var imgBack:String = "";
+    var imgMiddle:String = "";
+    var imgFront:String = "";
+    var audioFile:String = "";
+
+    switch(anim) {
+        case "CUT1":
+            imgBack = "SCENE1";
+            imgMiddle = "SCENE1-1";
+            imgFront = "";
+            audioFile = "CUT1";
+
+        case "CUT2":
+            imgBack = "SCENE1";
+            imgMiddle = "SCENE1-1";
+            imgFront = "";
+            audioFile = "CUT2"; 
+
+        case "CUT3":
+            imgBack = "SCENE1";
+            imgMiddle = "SCENE1-1";
+            imgFront = "";
+            audioFile = "CUT3";
+
+        case "CUT4":
+            imgBack = "SCENE1";
+            imgMiddle = "SCENE1-1";
+            imgFront = "";
+            audioFile = "CUT4";
+
+        case "CUT5":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-1";
+            imgFront = "";
+            audioFile = "CUT5";
+
+        case "CUT6":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-1";
+            imgFront = "";
+            audioFile = "CUT6";
+
+        case "CUT7":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-1";
+            imgFront = "";
+            audioFile = "CUT7";
+
+        case "CUT8":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-2";
+            imgFront = "";
+            audioFile = "CUT8";
+
+        case "CUT9":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-2";
+            imgFront = "";
+            audioFile = "CUT9";
+
+        case "CUT10":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-3";
+            imgFront = "";
+            audioFile = "CUT10";
+
+        case "CUT11":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-3";
+            imgFront = "";
+            audioFile = "CUT11";
+
+        case "CUT12":
+            imgBack = "SCENE2";
+            imgMiddle = "SCENE2-4";
+            imgFront = "";
+            audioFile = "CUT12";
+
+        case "CUT13":
+            imgBack = "SCENE3";
+            imgMiddle = "";
+            imgFront = "";
+            audioFile = "CUT13";
+
+        case "CUT14":
+            imgBack = "SCENE4";
+            imgMiddle = "";
+            imgFront = "";
+            audioFile = "CUT14";
+            
+default:
+            if (anim.indexOf("CUT") != -1) {
+                
+                audioFile = anim;
+
+                var sceneName = StringTools.replace(anim, "CUT", "SCENE");
+                
+                imgBack = sceneName;
+                imgMiddle = "";
+                imgFront = sceneName + "-1";
+            }
+    }
+
+    processImage(layerBack, imgBack);
+    processImage(layerMiddle, imgMiddle);
+    processImage(layerFront, imgFront);
+    playVoiceLine(audioFile);
+    
+    this.refresh();
+  }
+
+  function processImage(sprite:FunkinSprite, fileName:String):Void {
+    if (fileName == "") {
+        sprite.visible = false;
+        return;
+    }
+
+    var fullPath:String = 'dialogue/spectral-spat/' + fileName;
+
+    if (Assets.exists(Paths.image(fullPath), "IMAGE")) {
+        sprite.visible = true;
+        sprite.loadGraphic(Paths.image(fullPath));
+        sprite.scale.set(imageScale, imageScale);
+        sprite.updateHitbox(); 
+        sprite.screenCenter();
+        sprite.x += offsetX;
+        sprite.y += offsetY;
+    } else {
+        sprite.visible = false; 
+    }
+  }
+
+  function playVoiceLine(audioName:String):Void {
+    if (audioName == "") {
+        if (currentVoiceLine != null) currentVoiceLine.stop();
+        return;
+    }
+
+    if (currentVoiceLine != null && currentVoiceLine.isPlaying) {
+      currentVoiceLine.stop();
+    }
+    
+    var soundPath:String = 'dialogue/spectral-spat/' + audioName;
+    
+    if (Assets.exists(Paths.sound(soundPath), "SOUND")) {
+       currentVoiceLine = FunkinSound.playOnce(Paths.sound(soundPath), 1.0);
+    }
+  }
+  
+  override function onDestroy(event) {
+    super.onDestroy(event);
+    if (currentVoiceLine != null) currentVoiceLine.stop();
+  }
+}

@@ -1,0 +1,81 @@
+import funkin.modding.module.Module;
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import flixel.FlxG;
+
+class InfinityFloat extends Module
+{
+    // --- SETTINGS ---
+    
+    // Target Character ID (Must match the character JSON filename/ID)
+    var targetCharId:String = "TwinsMerged";
+
+    // Horizontal range (Infinity width)
+    var rangeX:Float = 230.0; 
+    
+    // Vertical range (Infinity height)
+    var rangeY:Float = 135.0; 
+    
+    // Movement speed multiplier
+    var speed:Float = 1.25;
+    
+    // ----------------
+
+    var time:Float = 0.0;
+
+    public function new()
+    {
+        super("InfinityFloat");
+    }
+
+    override function onUpdate(event:ScriptEvent):Void
+    {
+        // Safety check: Ensure playstate and stage are valid
+        if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+
+        var stage:Dynamic = PlayState.instance.currentStage;
+
+        time += FlxG.elapsed;
+
+        // Lissajous curve calculation for infinity shape
+        // X = sin(t), Y = sin(2t)
+        var currentOffsetX:Float = Math.sin(time * speed) * rangeX;
+        var currentOffsetY:Float = Math.sin(time * speed * 2.0) * rangeY;
+
+        // Calculate delta (change in position) to preserve original position
+        var prevTime:Float = time - FlxG.elapsed;
+        var prevOffsetX:Float = Math.sin(prevTime * speed) * rangeX;
+        var prevOffsetY:Float = Math.sin(prevTime * speed * 2.0) * rangeY;
+
+        var deltaX:Float = currentOffsetX - prevOffsetX;
+        var deltaY:Float = currentOffsetY - prevOffsetY;
+
+        // Retrieve character references
+        var dad:BaseCharacter = stage.getDad();
+        var bf:BaseCharacter = stage.getBoyfriend();
+        var gf:BaseCharacter = stage.getGirlfriend();
+
+        // Apply movement only to the target character
+        if (dad != null && dad.characterId == targetCharId)
+        {
+            applyMovement(dad, deltaX, deltaY);
+        }
+        
+        if (bf != null && bf.characterId == targetCharId)
+        {
+            applyMovement(bf, deltaX, deltaY);
+        }
+
+        if (gf != null && gf.characterId == targetCharId)
+        {
+            applyMovement(gf, deltaX, deltaY);
+        }
+    }
+
+    function applyMovement(char:BaseCharacter, dx:Float, dy:Float):Void
+    {
+        char.x += dx;
+        char.y += dy;
+    }
+}

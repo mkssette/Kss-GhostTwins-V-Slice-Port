@@ -1,0 +1,161 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 1,
+    "color": "#000000"
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT1",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Look, this is going nowhere. Let's just-" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT2",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "No!! It HAS to work now! I'm sure of it!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT3",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Marie, could you stop interrupting me and listen?! Like, just because you're only 4 minutes older, doesn't mean you have to boss me around all the time!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT4",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Me?! Bossy?! You're the one that is always complaining so why don't you stop being upset and give this a chance?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT5",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "We've been stuck here for decades! OF COURSE I'M UPSET!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT6",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "B- Beep skidoo?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT7",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Hey.. Uh.. guys?-" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT8",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "I'm so sick of having this false hope for this long!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT9",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "HEY!", "I'VE BEEN TRYING MY BEST FOR THE BOTH OF US!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT10",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "WELL, MAYBE YOU AREN'T TRYING HARD ENOUGH!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT11",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT12",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bap-?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT13",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "..." ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT14",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "Wh… what.. h-huh..?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT15",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "T-This… isn't.. supposed to.." ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT16",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "It... h-hurts..!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT17",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Go BF! Just keep singing!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT18",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bop beep bo!" ]
+    }
+  ]
+}

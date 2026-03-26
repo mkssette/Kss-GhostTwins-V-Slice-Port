@@ -1,0 +1,18 @@
+import funkin.util.Constants;
+import funkin.modding.module.Module;
+
+class echodiff extends Module
+{
+  public function new()
+  {
+    super('echodiff');
+  }
+  override function onCreate(event:SubStateScriptEvent)
+  {
+    super.onCreate(event);
+
+    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("echo");
+
+    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("hell");
+  }
+}

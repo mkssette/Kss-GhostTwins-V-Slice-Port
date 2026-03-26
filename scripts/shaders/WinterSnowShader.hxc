@@ -1,0 +1,32 @@
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.utils.Assets;
+import funkin.Paths;
+
+class WinterSnowShader extends FlxRuntimeShader
+{
+  public var iTime:Float = 0.0;
+
+  public function new()
+  {
+    var fragText:String = Assets.getText(Paths.frag('snow'));
+    super(fragText);
+    
+    setFloat('iTime', 0.0);
+    setFloat('uZoom', 1.0);
+    // CORRECCIÓN: Usamos setFloatArray en lugar de setFloatVector
+    setFloatArray('uScroll', [0.0, 0.0]);
+  }
+
+  public function update(elapsed:Float):Void
+  {
+    iTime += elapsed;
+    setFloat('iTime', iTime);
+  }
+
+  public function setCameraInfo(scrollX:Float, scrollY:Float, zoom:Float):Void
+  {
+     // CORRECCIÓN: Usamos setFloatArray aquí también
+     setFloatArray('uScroll', [scrollX, scrollY]);
+     setFloat('uZoom', zoom);
+  }
+}

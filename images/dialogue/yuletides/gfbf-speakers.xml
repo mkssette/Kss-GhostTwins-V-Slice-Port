@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gfbf-speakers.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="bfbeep0000" x="871" y="768" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="bfbop0000" x="0" y="1536" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="boyfriendspoon0000" x="1742" y="768" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="gfhappy0000" x="1742" y="0" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="gfnotice0000" x="871" y="0" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="gfoh0000" x="871" y="1536" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="gftalk0000" x="0" y="0" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="spingfriend0000" x="0" y="768" width="871" height="768" frameX="-18" frameY="-134" frameWidth="900" frameHeight="900"/>
+</TextureAtlas>

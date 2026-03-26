@@ -1,0 +1,96 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.Countdown;
+import funkin.play.PlayStatePlaylist;
+import funkin.ui.ScriptedMusicBeatSubState;
+import funkin.play.scoring.Scoring;
+import funkin.Highscore;
+
+class ScuffleSong extends Song
+{
+    var hasPlayedCutscene:Bool;
+    var endingShown:Bool = false;
+
+    public function new() { super('scuffle'); }
+
+    override function onCreate(event:ScriptEvent):Void { 
+        super.onCreate(event); 
+        
+        hasPlayedCutscene = false;
+        endingShown = false; 
+    }
+
+    override function onSongRetry(event:ScriptEvent) { 
+        super.onSongRetry(event); 
+        hasPlayedCutscene = true;
+    }
+
+    public override function onCountdownStart(event:CountdownScriptEvent):Void {
+        super.onCountdownStart(event);
+        if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
+        if (PlayState.instance.isChartingMode && !hasPlayedCutscene) hasPlayedCutscene = true;
+        
+        if (!hasPlayedCutscene) {
+            event.cancel();
+            hasPlayedCutscene = true;
+            PlayState.instance.startConversation('scuffle');
+        }
+    }
+
+    public override function onDialogueEnd() { 
+        super.onDialogueEnd(); 
+        Countdown.performCountdown();
+    }
+
+    override function onSongEnd(event:ScriptEvent) {
+        super.onSongEnd(event);
+
+        if (!PlayStatePlaylist.isStoryMode) return;
+        if (PlayState.instance.isChartingMode) return;
+        
+        if (endingShown) return;
+
+        var rankString:String = "SHIT";
+        try {
+            var songData = { score: PlayState.instance.songScore, tallies: Highscore.tallies };
+            rankString = "" + Scoring.calculateRank(songData);
+        } catch(e:Dynamic) {}
+
+        var isHard:Bool = (PlayStatePlaylist.campaignDifficulty == 'hard');
+        
+        trace("SCUFFLE END -> Rank: " + rankString + " | Hard: " + isHard);
+
+        if (isHard) {
+            var passedCheck:Bool = false;
+            
+            if (rankString == "PERFECT_GOLD") passedCheck = true;
+            if (rankString == "PERFECT")      passedCheck = true;
+            if (rankString == "EXCELLENT")    passedCheck = true;
+            if (rankString == "GREAT")        passedCheck = true;
+
+            if (passedCheck) {
+                trace("HARD + HIGH RANK: Advancing to Illustrious.");
+                return;
+            } else {
+                trace("HARD + LOW RANK: Triggering Ending.");
+                triggerEnding(event); 
+            }
+        } 
+        else {
+            trace("NORMAL/EASY MODE: Always ends in Ending.");
+            triggerEnding(event);
+        }
+    }
+
+    function triggerEnding(event:ScriptEvent) {
+        endingShown = true;
+        event.cancel();
+        
+        var sub = ScriptedMusicBeatSubState.init('EndingSubState');
+        if (sub != null) {
+            PlayState.instance.openSubState(sub);
+        } else {
+            trace("CRITICAL ERROR: EndingSubState.hxc not found.");
+        }
+    }
+}

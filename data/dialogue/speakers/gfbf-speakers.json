@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "name": "GF and BF Speakers",
+  "assetPath": "dialogue/yuletides/gfbf-speakers",
+  "scale": 0.6,
+   "offsets": [450, 75.1],
+  "animations": [
+    {
+      "name": "beep-bf",
+      "prefix": "bfbeep",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "bop-bf",
+      "prefix": "bfbop",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "spoon-bf",
+      "prefix": "boyfriendspoon",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "happy-gf",
+      "prefix": "gfhappy",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "notice-gf",
+      "prefix": "gfnotice",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "talk-gf",
+      "prefix": "gftalk",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "oh-gf",
+      "prefix": "gfoh",
+      "frameRate": 24,
+      "looped": false
+    },
+    {
+      "name": "spingfriend",
+      "prefix": "spingfriend",
+      "frameRate": 24,
+      "looped": false
+    }
+  ]
+}

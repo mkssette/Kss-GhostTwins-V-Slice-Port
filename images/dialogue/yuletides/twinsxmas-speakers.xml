@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="twinsxmas-speakers.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="hahatannerhasatail0000" x="1758" y="1712" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="mariehappy0000" x="0" y="856" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="marieindubitably0000" x="879" y="1712" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="marieoh0000" x="0" y="1712" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="marieyoureshort0000" x="879" y="856" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="merrymarie0000" x="1758" y="856" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="tannerhappy0000" x="879" y="0" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="tannerhmm0000" x="1758" y="0" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+	<SubTexture name="tanneroh0000" x="0" y="0" width="879" height="856" frameX="-4" frameY="-46" frameWidth="900" frameHeight="900"/>
+</TextureAtlas>

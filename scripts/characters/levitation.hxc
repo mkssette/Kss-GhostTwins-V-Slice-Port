@@ -1,0 +1,49 @@
+import funkin.modding.module.Module;
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import flixel.FlxG;
+
+class GeneralLevitationModule extends Module
+{
+    var charIds:Array<String> = ["twinsone", "twinstwo"]; 
+
+    var intensity:Float = 15.0;
+    var speed:Float = 0.8;
+
+    var time:Float = 0.0;
+
+    public function new()
+    {
+        super("GeneralLevitationModule");
+    }
+
+    override function onUpdate(event:ScriptEvent):Void
+    {
+        if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+
+        var stage = PlayState.instance.currentStage;
+
+        time += FlxG.elapsed;
+
+        var currentOffset:Float = Math.sin(time * speed) * intensity;
+        var prevOffset:Float = Math.sin((time - FlxG.elapsed) * speed) * intensity;
+        var delta:Float = currentOffset - prevOffset;
+
+        var dad:BaseCharacter = stage.getDad();
+        var bf:BaseCharacter = stage.getBoyfriend();
+        var gf:BaseCharacter = stage.getGirlfriend();
+
+        if (dad != null) checkAndLevitate(dad, delta);
+        if (bf != null) checkAndLevitate(bf, delta);
+        if (gf != null) checkAndLevitate(gf, delta);
+    }
+
+    function checkAndLevitate(char:BaseCharacter, delta:Float):Void
+    {
+        if (charIds.contains(char.characterId))
+        {
+            char.y += delta;
+        }
+    }
+}

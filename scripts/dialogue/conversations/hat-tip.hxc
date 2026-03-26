@@ -1,0 +1,332 @@
+import funkin.play.cutscene.dialogue.Conversation;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import funkin.graphics.FunkinSprite;
+import flixel.FlxG;
+import funkin.Assets;
+import StringTools;
+
+class HatTipConversation extends Conversation {
+  var currentVoiceLine:FunkinSound;
+  var silentSound:FunkinSound;
+
+  var backgroundLayer:FunkinSprite;
+  var middleLayer:FunkinSprite;
+  var frontLayer:FunkinSprite;
+
+  var imageScale:Float = 0.35;
+  var offsetX:Float = 0;
+  var offsetY:Float = 0;
+
+  var watcherAwake:Bool = false;
+  var lastRegisteredAnimation:String = "";
+
+  function new() {
+    super('hat-tip');
+  }
+
+  override function onCreate(event) {
+    super.onCreate(event);
+
+    lastRegisteredAnimation = "";
+    watcherAwake = true;
+
+    silentSound = FunkinSound.load(Paths.sound('null_sound'), 0);
+
+    backgroundLayer = new FunkinSprite(0, 0);
+    backgroundLayer.zIndex = 10;
+    backgroundLayer.antialiasing = true;
+    backgroundLayer.visible = false;
+    this.add(backgroundLayer);
+
+    middleLayer = new FunkinSprite(0, 0);
+    middleLayer.zIndex = 11;
+    middleLayer.antialiasing = true;
+    middleLayer.visible = false;
+    this.add(middleLayer);
+
+    frontLayer = new FunkinSprite(0, 0);
+    frontLayer.zIndex = 12;
+    frontLayer.antialiasing = true;
+    frontLayer.visible = false;
+    this.add(frontLayer);
+
+    this.refresh();
+
+    watcherAwake = true;
+  }
+
+  override function onDialogueLine(event) {
+    super.onDialogueLine(event);
+    watcherAwake = true;
+  }
+
+  override function onUpdate(event) {
+    super.onUpdate(event);
+
+    if (this.currentDialogueBox != null && this.currentDialogueBox.textDisplay != null) {
+      if (!this.currentDialogueBox.textDisplay.sounds.contains(silentSound)) {
+        this.currentDialogueBox.textDisplay.sounds = [silentSound];
+      }
+    }
+
+    if (!watcherAwake)
+      return;
+    if (this.currentSpeaker == null) return;
+
+    var currentAnimation:String = "";
+    if (this.currentSpeaker.animation.curAnim != null) {
+      currentAnimation = this.currentSpeaker.animation.curAnim.name;
+    }
+
+    if (currentAnimation != "" && currentAnimation != lastRegisteredAnimation) {
+      trace('WATCHER: New dialogue detected -> " + currentAnimation');
+      lastRegisteredAnimation = currentAnimation;
+
+      if (this.currentSpeaker.id == "hat-tip-speaker") {
+        setupScene(currentAnimation);
+      }
+      watcherAwake = false;
+    }
+  }
+
+  function setupScene(animationName:String):Void {
+    var img1:String = "";
+    var img2:String = "";
+    var img3:String = "";
+    var audioFile:String = "";
+
+    switch (animationName) {
+        case "CUT1":
+            img1 = "SCENE1";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT1";
+
+        case "CUT2":
+            img1 = "SCENE1";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT2";
+
+        case "CUT3":
+            img1 = "SCENE1";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT3";
+
+        case "CUT4":
+            img1 = "SCENE2";
+            img2 = "SCENE2-1";
+            img3 = "";
+            audioFile = "CUT4";
+
+        case "CUT5":
+            img1 = "SCENE2";
+            img2 = "SCENE2-1";
+            img3 = "SCENE2-2";
+            audioFile = "CUT5";
+
+        case "CUT6":
+            img1 = "SCENE2";
+            img2 = "SCENE2-1";
+            img3 = "SCENE2-3";
+            audioFile = "CUT6";
+
+        case "CUT7":
+            img1 = "SCENE2";
+            img2 = "SCENE2-4";
+            img3 = "SCENE2-3";
+            audioFile = "CUT7";
+
+        case "CUT8":
+            img1 = "SCENE3";
+            img2 = "SCENE3-1";
+            img3 = "";
+            audioFile = "CUT8";
+
+        case "CUT9":
+            img1 = "SCENE3";
+            img2 = "SCENE3-1";
+            img3 = "";
+            audioFile = "CUT9";
+
+        case "CUT10":
+            img1 = "SCENE4";
+            img2 = "SCENE4-1";
+            img3 = "";
+            audioFile = "CUT10";
+
+        case "CUT11":
+            img1 = "SCENE4";
+            img2 = "SCENE4-1";
+            img3 = "";
+            audioFile = "CUT11";
+
+        case "CUT12":
+            img1 = "SCENE5";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT12";
+
+        case "CUT13":
+            img1 = "SCENE6";
+            img2 = "SCENE6-1";
+            img3 = "";
+            audioFile = "CUT13";
+
+        case "CUT14":
+            img1 = "SCENE6";
+            img2 = "SCENE6-1";
+            img3 = "SCENE6-2";
+            audioFile = "CUT14";
+
+        case "CUT15":
+            img1 = "SCENE6";
+            img2 = "SCENE6-1";
+            img3 = "SCENE6-2";
+            audioFile = "CUT15";
+
+        case "CUT16":
+            img1 = "SCENE7";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT16";
+
+        case "CUT17":
+            img1 = "SCENE7";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT17";
+
+        case "CUT18":
+            img1 = "SCENE7";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT18";
+
+        case "CUT19":
+            img1 = "SCENE8";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT19";
+
+        case "CUT20":
+            img1 = "SCENE8";
+            img2 = "SCENE8-1";
+            img3 = "";
+            audioFile = "CUT20";
+
+        case "CUT21":
+            img1 = "SCENE8";
+            img2 = "SCENE8-1";
+            img3 = "";
+            audioFile = "CUT21";
+
+        case "CUT22":
+            img1 = "SCENE9";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT22";
+
+        case "CUT23":
+            img1 = "SCENE10";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT23";
+
+        case "CUT24":
+            img1 = "SCENE11";
+            img2 = "SCENE11-1";
+            img3 = "";
+            audioFile = "CUT24";
+
+        case "CUT25":
+            img1 = "SCENE11";
+            img2 = "SCENE11-1";
+            img3 = "";
+            audioFile = "CUT25";
+
+        case "CUT26":
+            img1 = "SCENE11";
+            img2 = "SCENE11-1";
+            img3 = "";
+            audioFile = "CUT26";
+
+        case "CUT27":
+            img1 = "SCENE12";
+            img2 = "SCENE12-1";
+            img3 = "";
+            audioFile = "";
+
+        case "CUT28":
+            img1 = "SCENE13";
+            img2 = "";
+            img3 = "";
+            audioFile = "CUT28";
+            
+        default:
+          if (animationName.indexOf("CUT") != -1) {
+            audioFile = animationName;
+
+            var sceneName = StringTools.replace(animationName, "CUT", "SCENE");
+
+            img1 = sceneName;
+            img2 = "";
+            img3 = sceneName + "-1";
+          }
+    }
+
+    processImage(backgroundLayer, img1);
+    processImage(middleLayer, img2);
+    processImage(frontLayer, img3);
+    playVoiceLine(audioFile);
+
+    this.refresh();
+  }
+
+  function processImage(sprite:FunkinSprite, fileName:String):Void {
+    if (fileName == "") {
+      sprite.visible = false;
+      return;
+    }
+
+    var fullPath:String = 'dialogue/hat-tip/' + fileName;
+
+    if (Assets.exists(Paths.image(fullPath), "IMAGE")) {
+      sprite.visible = true;
+      sprite.loadGraphic(Paths.image(fullPath));
+      sprite.scale.set(imageScale, imageScale);
+      sprite.updateHitbox();
+      sprite.screenCenter();
+      sprite.x += offsetX;
+      sprite.y += offsetY;
+    } else {
+      sprite.visible = false;
+    }
+  }
+
+  function playVoiceLine(audioName:String):Void {
+    if (audioName == "") {
+      if (currentVoiceLine != null)
+        currentVoiceLine.stop();
+      return;
+    }
+
+    if (currentVoiceLine != null && currentVoiceLine.isPlaying) {
+      currentVoiceLine.stop();
+    }
+
+    var soundPath:String = 'dialogue/hat-tip/' + audioName;
+
+    if (Assets.exists(Paths.sound(soundPath), "SOUND")) {
+      currentVoiceLine = FunkinSound.playOnce(Paths.sound(soundPath), 1.0);
+    }
+  }
+
+  override function onDestroy(event) {
+    super.onDestroy(event);
+    if (currentVoiceLine != null)
+      currentVoiceLine.stop();
+  }
+}

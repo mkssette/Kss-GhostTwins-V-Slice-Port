@@ -1,0 +1,183 @@
+import funkin.play.cutscene.dialogue.Conversation;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import funkin.graphics.FunkinSprite;
+import flixel.FlxSprite; 
+import flixel.FlxG;
+
+class YulestidesConversation extends Conversation {
+
+  var currentVoiceLine:FunkinSound;
+  var backgroundSprite:FlxSprite;
+  var lineIndex:Int = 1;
+  var backgroundScale:Float = 0.35;
+  var silenceSound:FunkinSound;
+
+  function new() {
+    super('yuletides');
+  }
+
+  override function onCreate(event) {
+    super.onCreate(event);
+    
+    lineIndex = 1;
+    trace("Yuletides: 1");
+
+
+    backgroundSprite = new FlxSprite(0, 0);
+    backgroundSprite.zIndex = 10; 
+    backgroundSprite.antialiasing = true;
+    
+    changeBackground("BACK1");
+    
+    this.add(backgroundSprite);
+  }
+
+
+  override function onDialogueStart(event) {
+    super.onDialogueStart(event);
+    
+    silenceSound = FunkinSound.load(Paths.sound('null_sound'), 0);
+    
+    lineIndex = 1;
+
+    playAudio("AUDIO1");
+    changeBackground("BACK1");
+    
+    trace("Yuletides: Diálogo arrancado/reseteado.");
+  }
+
+  override function onDialogueLine(event) {
+    super.onDialogueLine(event);
+    
+    lineIndex++;
+    
+trace("Linea actual: " + lineIndex);
+
+
+    if (currentDialogueBox != null && currentDialogueBox.textDisplay != null) {
+        currentDialogueBox.textDisplay.sounds = null; 
+    }
+    if (currentVoiceLine != null && currentVoiceLine.playing) {
+        currentVoiceLine.stop();
+    }
+
+    switch (lineIndex) {
+        case 2: 
+            playAudio("AUDIO2"); 
+            changeBackground("BACK1");
+        case 3: 
+            playAudio("AUDIO3"); 
+            changeBackground("BACK2");
+        case 4: 
+            playAudio("AUDIO4"); 
+            changeBackground("BACK3");
+        case 5: 
+            playAudio("AUDIO5"); 
+            changeBackground("BACK3");
+        case 6: 
+            playAudio("AUDIO6"); 
+            changeBackground("BACK3");
+        case 7: 
+            playAudio("AUDIO7"); 
+            changeBackground("BACK3");
+        case 8: 
+            playAudio("AUDIO8"); 
+            changeBackground("BACK4");
+        case 9: 
+            playAudio("AUDIO9"); 
+            changeBackground("BACK4");
+        case 10: 
+            playAudio("AUDIO10"); 
+            changeBackground("BACK4");
+        case 11: 
+            playAudio("AUDIO11"); 
+            changeBackground("BACK4");
+        case 12: 
+            playAudio("AUDIO12"); 
+            changeBackground("BACK4");
+        case 13: 
+            playAudio("AUDIO13"); 
+            changeBackground("BACK5");
+        case 14: 
+            playAudio("AUDIO14"); 
+            changeBackground("BACK5");
+        case 15: 
+            playAudio("AUDIO15"); 
+            changeBackground("BACK6");
+        case 16: 
+            playAudio("AUDIO16"); 
+            changeBackground("BACK6");
+        case 17: 
+            playAudio("AUDIO17"); 
+            changeBackground("BACK6");
+        case 18: 
+            playAudio("AUDIO18"); 
+            changeBackground("BACK7");
+        case 19: 
+            playAudio("AUDIO19"); 
+            changeBackground("BACK7");
+        case 20: 
+            playAudio("AUDIO20"); 
+            changeBackground("BACK7");
+        case 21: 
+            playAudio("AUDIO21"); 
+            changeBackground("BACK7");
+        case 21: 
+            playAudio("AUDIO21"); 
+            changeBackground("BACK7");
+        case 22: 
+            playAudio("AUDIO22"); 
+            changeBackground("BACK8");
+        case 23: 
+            playAudio("AUDIO23"); 
+            changeBackground("BACK9");
+        case 24: 
+            playAudio("AUDIO24"); 
+            changeBackground("BACK10");
+        
+        default:
+            trace("No hay evento asignado para la línea " + lineIndex);
+    }
+  }
+
+
+  function playAudio(audioName:String) {
+      var path:String = 'dialogue/yuletides/' + audioName;
+      currentVoiceLine = FunkinSound.load(Paths.sound(path));
+      
+      if (currentVoiceLine != null) {
+        FlxG.sound.list.add(currentVoiceLine);
+          currentVoiceLine.play();
+          currentVoiceLine.volume = 1.0;
+      } else {
+          trace("ERROR: No se encontró audio: " + audioName);
+      }
+  }
+
+  function changeBackground(imageName:String) {
+      if (backgroundSprite == null) return;
+
+      var path:String = 'dialogue/yuletides/' + imageName;
+      if (Paths.image(path) != null) {
+          backgroundSprite.loadGraphic(Paths.image(path));
+
+          backgroundSprite.scale.set(backgroundScale, backgroundScale);
+          backgroundSprite.updateHitbox();
+          
+          backgroundSprite.screenCenter();
+          backgroundSprite.visible = true;
+      } else {
+          trace("AVISO: No se encontró fondo: " + imageName + " (Mantenido fondo anterior)");
+      }
+  }
+  
+  override function onDestroy(event) {
+      super.onDestroy(event);
+      if (currentVoiceLine != null) {
+          currentVoiceLine.stop();
+          currentVoiceLine = null;
+      }
+      backgroundSprite = null;
+  }
+}

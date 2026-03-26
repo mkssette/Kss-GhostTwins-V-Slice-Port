@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="twins.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="bf0000" x="0" y="2832" width="3844" height="708" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+	<SubTexture name="gf0000" x="0" y="708" width="3844" height="708" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+	<SubTexture name="marie0000" x="3844" y="0" width="3844" height="708" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+	<SubTexture name="nothing0000" x="3844" y="708" width="4" height="4" frameX="0" frameY="0" frameWidth="4" frameHeight="4"/>
+	<SubTexture name="tandm0000" x="0" y="2124" width="3844" height="708" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+	<SubTexture name="tanner0000" x="0" y="0" width="3844" height="708" frameX="0" frameY="-2" frameWidth="3842" frameHeight="708"/>
+	<SubTexture name="tanrie0000" x="0" y="1416" width="3844" height="708" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+	<SubTexture name="none0000" x="3844" y="708" width="4" height="4" frameX="0" frameY="0" frameWidth="3842" frameHeight="706"/>
+</TextureAtlas>

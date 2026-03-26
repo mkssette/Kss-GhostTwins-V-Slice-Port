@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="operaghosts.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="BlackLines0000" x="0" y="1662" width="570" height="806" frameX="-47" frameY="-69" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0001" x="2288" y="0" width="570" height="822" frameX="-47" frameY="-69" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0002" x="2288" y="0" width="570" height="822" frameX="-47" frameY="-69" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0003" x="2288" y="0" width="570" height="822" frameX="-47" frameY="-69" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0004" x="1142" y="831" width="573" height="819" frameX="-44" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0005" x="1145" y="0" width="573" height="827" frameX="-44" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0006" x="1145" y="0" width="573" height="827" frameX="-44" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0007" x="570" y="831" width="572" height="823" frameX="-45" frameY="-76" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0008" x="573" y="0" width="572" height="831" frameX="-45" frameY="-76" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0009" x="0" y="0" width="573" height="831" frameX="-44" frameY="-76" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0010" x="0" y="0" width="573" height="831" frameX="-44" frameY="-76" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0011" x="2288" y="822" width="568" height="820" frameX="-49" frameY="-87" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0012" x="1718" y="825" width="568" height="825" frameX="-49" frameY="-87" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0013" x="1718" y="0" width="570" height="825" frameX="-47" frameY="-87" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0014" x="0" y="831" width="570" height="831" frameX="-47" frameY="-81" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0015" x="1139" y="1662" width="569" height="798" frameX="-47" frameY="-77" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0016" x="570" y="1662" width="569" height="803" frameX="-47" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0017" x="570" y="1662" width="569" height="803" frameX="-47" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0018" x="570" y="1662" width="569" height="803" frameX="-47" frameY="-72" frameWidth="684" frameHeight="980"/>
+	<SubTexture name="BlackLines0019" x="570" y="1662" width="569" height="803" frameX="-47" frameY="-72" frameWidth="684" frameHeight="980"/>
+</TextureAtlas>

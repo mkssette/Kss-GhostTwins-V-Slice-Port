@@ -1,0 +1,62 @@
+{
+  "version": "2.2.4",
+  "songName": "Hat Tip",
+  "artist": "Mike Geno ",
+  "charter": "Unknown",
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [
+      "easy",
+      "normal",
+      "hard",
+      "echo"
+    ],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf",
+      "opponent": "twinsone",
+      "instrumental": "",
+      "opponentVocals": [
+        "twinsone"
+      ],
+      "playerVocals": [
+        "bf"
+      ]
+    },
+    "stage": "ghostoperastage_old",
+    "noteStyle": "twins",
+    "album": "twinsalbum",
+    "ratings": {
+      "easy": 1,
+      "normal": 1,
+      "hard": 3,
+      "echo": 4 
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.5",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 80,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}
