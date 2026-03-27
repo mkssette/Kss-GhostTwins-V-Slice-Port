@@ -7,11 +7,11 @@ import funkin.graphics.shaders.DropShadowShader;
 import funkin.play.character.BaseCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.stage.StageProp;
-import WinterSnowShader;
+import KssSnowShader;
 
 class GhostMall extends Stage
 {
-  var snow:WinterSnowShader;
+  var snow:KssSnowShader;
   var snowFilter:ShaderFilter;
 
   function new()
@@ -27,7 +27,7 @@ class GhostMall extends Stage
     
 
     try {
-        snow = new WinterSnowShader();
+        snow = new KssSnowShader();
         snowFilter = new ShaderFilter(snow);
         addFilterToCamera(PlayState.instance.camGame, snowFilter);
     } catch(e:Dynamic) {
@@ -42,6 +42,7 @@ class GhostMall extends Stage
     var rim = new DropShadowShader();
     rim.color = 0xFEFEFF; 
     rim.setAdjustColor(-10, -10, -10, -5); 
+    rim.antialiasAmt = 0;
 
     character.shader = rim;
     rim.attachedSprite = character;
@@ -69,18 +70,10 @@ class GhostMall extends Stage
       var rim = new DropShadowShader();
       rim.color = 0xFFFEFEFF;
       rim.angle = 90;
+      rim.antialiasAmt = 0;
 
       prop.shader = rim;
       rim.attachedSprite = prop;
-
-      var prop_persist:Dynamic = prop;
-      if (prop.animation != null) {
-          prop.animation.onFrameChange.add(function() {
-            if (prop_persist != null && rim != null) {
-              rim.updateFrameInfo(prop_persist.frame);
-            }
-          });
-      }
     }
   }
 
@@ -105,7 +98,7 @@ class GhostMall extends Stage
     super.onUpdate(event);
     
 
-    if (snow != null) {
+    if (snow != null && PlayState.instance != null && PlayState.instance.camGame != null && PlayState.instance.camGame.scroll != null) {
         snow.update(FlxG.elapsed);
         
         snow.setCameraInfo(
