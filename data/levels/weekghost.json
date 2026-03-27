@@ -53,5 +53,8 @@
     }
   ],
   "background": "#FFFFFF",
+      "capsule": {
+    "name": "WEEK GHOST"
+  },
   "songs": ["hat-tip","spectral-spat","scuffle", "illustrious"]
 }

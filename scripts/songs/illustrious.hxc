@@ -11,8 +11,15 @@ class IllustriousSong extends Song
 
     public function new() { super('illustrious'); }
 
-    override function onCreate(event:ScriptEvent):Void { super.onCreate(event); hasPlayedCutscene = false; }
-    override function onSongRetry(event:ScriptEvent) { super.onSongRetry(event); hasPlayedCutscene = true; }
+    override function onCreate(event:ScriptEvent):Void { 
+        super.onCreate(event); 
+        hasPlayedCutscene = false; 
+    }
+    
+    override function onSongRetry(event:ScriptEvent) { 
+        super.onSongRetry(event); 
+        hasPlayedCutscene = true; 
+    }
 
     public override function onCountdownStart(event:CountdownScriptEvent):Void {
         super.onCountdownStart(event);
@@ -25,7 +32,10 @@ class IllustriousSong extends Song
         }
     }
 
-    public override function onDialogueEnd() { super.onDialogueEnd(); Countdown.performCountdown(); }
+    public override function onDialogueEnd() { 
+        super.onDialogueEnd(); 
+        Countdown.performCountdown(); 
+    }
 
     override function onSongEnd(event:ScriptEvent) {
         super.onSongEnd(event);
@@ -35,6 +45,10 @@ class IllustriousSong extends Song
 
             endingShown = true;
             event.cancel();
+            
+            PlayState.instance.camHUD.visible = false;
+            PlayState.instance.camGame.visible = false;
+            
             PlayState.instance.openSubState(ScriptedMusicBeatSubState.init('EndingSubState'));
         }
     }

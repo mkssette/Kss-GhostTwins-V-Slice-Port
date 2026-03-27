@@ -56,10 +56,8 @@ class ScuffleSong extends Song
             rankString = "" + Scoring.calculateRank(songData);
         } catch(e:Dynamic) {}
 
-        var isHard:Bool = (PlayStatePlaylist.campaignDifficulty == 'hard');
+        var isHard:Bool = (PlayStatePlaylist.campaignDifficulty == 'hard' || PlayStatePlaylist.campaignDifficulty == 'echo');
         
-        trace("SCUFFLE END -> Rank: " + rankString + " | Hard: " + isHard);
-
         if (isHard) {
             var passedCheck:Bool = false;
             
@@ -69,15 +67,12 @@ class ScuffleSong extends Song
             if (rankString == "GREAT")        passedCheck = true;
 
             if (passedCheck) {
-                trace("HARD + HIGH RANK: Advancing to Illustrious.");
                 return;
             } else {
-                trace("HARD + LOW RANK: Triggering Ending.");
                 triggerEnding(event); 
             }
         } 
         else {
-            trace("NORMAL/EASY MODE: Always ends in Ending.");
             triggerEnding(event);
         }
     }
@@ -86,11 +81,12 @@ class ScuffleSong extends Song
         endingShown = true;
         event.cancel();
         
+        PlayState.instance.camHUD.visible = false;
+        PlayState.instance.camGame.visible = false;
+        
         var sub = ScriptedMusicBeatSubState.init('EndingSubState');
         if (sub != null) {
             PlayState.instance.openSubState(sub);
-        } else {
-            trace("CRITICAL ERROR: EndingSubState.hxc not found.");
         }
     }
 }

@@ -1,10 +1,24 @@
 {
-	"version": "1.0.0",
 	"renderType": "sparrow",
 	"offsets": [
 		0,
 		0
 	],
+	"applyStageMatrix": false,
+	"startingAnimation": "idle",
+	"assetPath": "characters/twinsXmas",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "twinsXmas",
+		"flipX": false
+	},
+	"generatedBy": "Nova Character Editor v3.0.1",
+	"version": "1.0.0",
 	"danceEvery": 1,
 	"scale": 1.4,
 	"name": "TwinsChristmas",
@@ -13,22 +27,16 @@
 		0
 	],
 	"flipX": false,
-	"startingAnimation": "idle",
 	"isPixel": false,
 	"singTime": 8,
 	"flipY": false,
-	"healthIcon": {
-		"offsets": [
-			0,
-			0
-		],
-		"isPixel": false,
-		"scale": 1,
-		"flipX": false,
-		"id": "twinsXmas"
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
 	},
-	"assetPath": "characters/twinsXmas",
-	"generatedBy": "Nova Character Editor v3.0.1",
 	"animations": [
 		{
 			"offsets": [
@@ -37,29 +45,31 @@
 			],
 			"frameIndices": [],
 			"prefix": "twinIdle",
-			"name": "idle",
-			"looped": false,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": false,
+			"name": "idle",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
 				0,
-				0
+				-5
 			],
 			"frameIndices": [
 				11,
 				12
 			],
 			"prefix": "twinIdle",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": true,
 			"name": "idle-hold",
-			"looped": true,
-			"flipX": false,
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
@@ -68,12 +78,13 @@
 			],
 			"frameIndices": [],
 			"prefix": "twinLeft",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
 			"name": "singLEFT",
-			"looped": false,
-			"flipX": false,
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
@@ -90,31 +101,33 @@
 				9
 			],
 			"prefix": "twinLeft",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": true,
 			"name": "singLEFT-hold",
-			"looped": true,
-			"flipX": false,
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
 				0,
-				0
+				-5
 			],
 			"frameIndices": [],
 			"prefix": "twinDown",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
 			"name": "singDOWN",
-			"looped": false,
-			"flipX": false,
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
 				0,
-				0
+				-5
 			],
 			"frameIndices": [
 				3,
@@ -126,31 +139,33 @@
 				9
 			],
 			"prefix": "twinDown",
-			"name": "singDOWN-hold",
-			"looped": true,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": true,
+			"name": "singDOWN-hold",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
-				0,
-				6
+				5,
+				-4
 			],
 			"frameIndices": [],
 			"prefix": "twinUp",
-			"name": "singUP",
-			"looped": false,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": false,
+			"name": "singUP",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
-				0,
-				0
+				5,
+				-5
 			],
 			"frameIndices": [
 				3,
@@ -162,12 +177,13 @@
 				9
 			],
 			"prefix": "twinUp",
-			"name": "singUP-hold",
-			"looped": true,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": true,
+			"name": "singUP-hold",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
@@ -176,12 +192,13 @@
 			],
 			"frameIndices": [],
 			"prefix": "twinRight",
-			"name": "singRIGHT",
-			"looped": false,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		},
 		{
 			"offsets": [
@@ -201,12 +218,13 @@
 				12
 			],
 			"prefix": "twinRight",
-			"name": "singRIGHT-hold",
-			"looped": true,
+			"animType": "framelabel",
 			"flipX": false,
+			"looped": true,
+			"name": "singRIGHT-hold",
 			"flipY": false,
-			"frameRate": 24,
-			"assetPath": null
+			"assetPath": null,
+			"frameRate": 24
 		}
 	]
 }

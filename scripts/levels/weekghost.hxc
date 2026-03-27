@@ -19,7 +19,7 @@ class WeekGhostLevel extends Level
     if (Std.isOfType(FlxG.state, StoryMenuState)) {
       var currentDiff = Reflect.field(FlxG.state, "currentDifficultyId");
 
-      if (currentDiff == "hard") {
+      if (currentDiff == "hard" || currentDiff == "echo") {
         songs.push("illustrious");
       }
     }

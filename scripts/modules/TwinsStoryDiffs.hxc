@@ -1,0 +1,76 @@
+import funkin.modding.module.Module;
+import flixel.FlxG;
+import funkin.util.Constants;
+import funkin.ui.story.StoryMenuState;
+import funkin.Paths; 
+import funkin.util.ReflectUtil;
+
+class TwinsStoryDiffs extends Module
+{
+    var lastDifficulty:String = "";
+    var lastWeek:String = ""; 
+    
+    var weeks:Array<String> = ['weekghost', 'weekghostxmas'];
+    
+    var customDifficultyList:Array<String> = ['easy', 'normal', 'hard', 'echo'];
+    var standardDifficultyList:Array<String> = ['easy', 'normal', 'hard'];
+
+    function new()
+    {
+        super("TwinsStoryDiffs");
+    }
+
+    override function onUpdate(event):Void
+    {
+        super.onUpdate(event);
+        
+        if (Std.isOfType(FlxG.state, StoryMenuState))
+        {
+            var state:StoryMenuState = FlxG.state;
+
+            if (state.currentLevel != null)
+            {
+                if (weeks.contains(state.currentLevel.id))
+                {
+                    Constants.DEFAULT_DIFFICULTY_LIST = customDifficultyList;
+                    if (state.currentLevel.id != lastWeek || state.currentDifficultyId != lastDifficulty)
+                    {
+                        lastWeek = state.currentLevel.id;
+                        lastDifficulty = state.currentDifficultyId;
+
+                        var imagePath:String = 'storymenu/difficulties/' + state.currentDifficultyId;
+                        state.difficultySprite.loadGraphic(Paths.image(imagePath));
+                        state.difficultySprite.updateHitbox();
+                        
+                        centerDifficultySprite(state);
+                    }
+                }
+                else
+                {
+                    if (Constants.DEFAULT_DIFFICULTY_LIST == customDifficultyList) 
+                    {
+                        Constants.DEFAULT_DIFFICULTY_LIST = standardDifficultyList;
+
+                        if (!Constants.DEFAULT_DIFFICULTY_LIST.contains(state.currentDifficultyId)) {
+                            state.currentDifficultyId = 'normal';
+                            lastDifficulty = 'normal';
+                            
+                            state.difficultySprite.loadGraphic(Paths.image('storymenu/difficulties/normal'));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function centerDifficultySprite(state:StoryMenuState) {
+        var leftArrow = ReflectUtil.getProperty(state, "leftDifficultyArrow"); 
+        var rightArrow = ReflectUtil.getProperty(state, "rightDifficultyArrow");
+
+        if (leftArrow != null && rightArrow != null) {
+            var centerPoint = (leftArrow.x + leftArrow.width + rightArrow.x) / 2;
+            state.difficultySprite.x = centerPoint - (state.difficultySprite.width / 2);
+            state.difficultySprite.y = leftArrow.y; 
+        }
+    }
+}

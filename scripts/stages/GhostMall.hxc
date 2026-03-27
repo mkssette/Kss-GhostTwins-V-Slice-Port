@@ -8,11 +8,16 @@ import funkin.play.character.BaseCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.stage.StageProp;
 import KssSnowShader;
+import Reflect;
+import Std;
 
 class GhostMall extends Stage
 {
   var snow:KssSnowShader;
   var snowFilter:ShaderFilter;
+
+  var charShaders:Dynamic = {};
+  var propShaders:Dynamic = {};
 
   function new()
   {
@@ -25,13 +30,11 @@ class GhostMall extends Stage
 
     if (PlayState.instance == null) return;
     
-
     try {
         snow = new KssSnowShader();
         snowFilter = new ShaderFilter(snow);
         addFilterToCamera(PlayState.instance.camGame, snowFilter);
     } catch(e:Dynamic) {
-        trace("Error SnowShader: " + e);
     }
   }
 
@@ -39,13 +42,22 @@ class GhostMall extends Stage
   {
     super.addCharacter(character, charType);
 
-    var rim = new DropShadowShader();
-    rim.color = 0xFEFEFF; 
-    rim.setAdjustColor(-10, -10, -10, -5); 
-    rim.antialiasAmt = 0;
+    if (FlxG.onMobile) return;
+
+    var charKey:String = Std.string(charType);
+    var rim:DropShadowShader = Reflect.field(charShaders, charKey);
+
+    if (rim == null) {
+        rim = new DropShadowShader();
+        rim.color = 0xFEFEFF; 
+        rim.setAdjustColor(-10, -10, -10, -5); 
+        rim.antialiasAmt = 0;
+        Reflect.setField(charShaders, charKey, rim);
+    }
 
     character.shader = rim;
     rim.attachedSprite = character;
+    
     switch (charType)
     {
       case CharacterType.DAD:
@@ -56,7 +68,7 @@ class GhostMall extends Stage
 
     var character_persist:BaseCharacter = character;
     character.animation.onFrameChange.add(function() {
-      if (character_persist != null && rim != null)
+      if (character_persist != null && character_persist.shader == rim && rim != null)
       {
         rim.updateFrameInfo(character_persist.frame);
       }
@@ -66,11 +78,19 @@ class GhostMall extends Stage
   override function addProp(prop:StageProp, ?name:String = null)
   {
     super.addProp(prop, name);
-    if (name != "back") {
-      var rim = new DropShadowShader();
-      rim.color = 0xFFFEFEFF;
-      rim.angle = 90;
-      rim.antialiasAmt = 0;
+    
+    if (FlxG.onMobile) return;
+
+    if (name != null && name != "back") {
+      var rim:DropShadowShader = Reflect.field(propShaders, name);
+
+      if (rim == null) {
+          rim = new DropShadowShader();
+          rim.color = 0xFFFEFEFF;
+          rim.angle = 90;
+          rim.antialiasAmt = 0;
+          Reflect.setField(propShaders, name, rim);
+      }
 
       prop.shader = rim;
       rim.attachedSprite = prop;
@@ -97,7 +117,6 @@ class GhostMall extends Stage
   {
     super.onUpdate(event);
     
-
     if (snow != null && PlayState.instance != null && PlayState.instance.camGame != null && PlayState.instance.camGame.scroll != null) {
         snow.update(FlxG.elapsed);
         

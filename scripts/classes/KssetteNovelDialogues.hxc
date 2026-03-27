@@ -1,0 +1,212 @@
+import funkin.play.cutscene.dialogue.Conversation;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import funkin.graphics.FunkinSprite;
+import funkin.Assets;
+import StringTools;
+import funkin.util.ReflectUtil;
+
+class KssetteNovelDialogues extends Conversation {
+    var currentVoiceLine:FunkinSound;
+    var silenceSound:FunkinSound;
+
+    var layerBack:FunkinSprite;
+    var layerMiddle:FunkinSprite;
+    var layerFront:FunkinSprite;
+
+    var imageScale:Float = 0.35;
+    var offsetX:Float = 0;
+    var offsetY:Float = 0;
+
+    var watcherAwake:Bool = false;
+    var lastRegisteredAnim:String = "";
+    
+    var config:Dynamic;
+    var isDummy:Bool = false;
+    var cutscenesMap:Dynamic = null;
+    var folderName:String = "";
+    var currentBackImg:String = "";
+    var currentMiddleImg:String = "";
+    var currentFrontImg:String = "";
+
+    public function new(?id:String = "unknown", ?title:String = null, ?config:Dynamic = null) {
+        if (id == null || id == "" || id == "unknown") {
+            id = "ksstt_unknown";
+            isDummy = true;
+        }
+        
+        super(id);
+        this.config = config;
+        this.folderName = id;
+    }
+
+    override function onCreate(event) {
+        super.onCreate(event);
+
+        if (isDummy) return;
+
+        if (this.config != null) {
+            if (ReflectUtil.hasField(this.config, "folder")) {
+                this.folderName = ReflectUtil.field(this.config, "folder");
+            }
+            if (ReflectUtil.hasField(this.config, "start")) {
+                var startNode:Dynamic = ReflectUtil.field(this.config, "start");
+                if (ReflectUtil.hasField(startNode, "cutscenes")) {
+                    this.cutscenesMap = ReflectUtil.field(startNode, "cutscenes");
+                }
+            }
+        }
+
+        lastRegisteredAnim = "";
+        watcherAwake = true;
+
+        silenceSound = FunkinSound.load(Paths.sound('null_sound'), 0);
+
+        layerBack = new FunkinSprite(0, 0);
+        layerBack.zIndex = 10;
+        layerBack.antialiasing = true;
+        layerBack.visible = false;
+        this.add(layerBack);
+
+        layerMiddle = new FunkinSprite(0, 0);
+        layerMiddle.zIndex = 11;
+        layerMiddle.antialiasing = true;
+        layerMiddle.visible = false;
+        this.add(layerMiddle);
+
+        layerFront = new FunkinSprite(0, 0);
+        layerFront.zIndex = 12;
+        layerFront.antialiasing = true;
+        layerFront.visible = false;
+        this.add(layerFront);
+        
+        this.refresh();
+    }
+
+    override function onDialogueLine(event) {
+        super.onDialogueLine(event);
+        if (isDummy) return;
+
+        watcherAwake = true;
+    }
+
+    override function onUpdate(event) {
+        super.onUpdate(event);
+        if (isDummy) return;
+
+        if (this.currentDialogueBox != null && this.currentDialogueBox.textDisplay != null && this.currentDialogueBox.textDisplay.sounds != null) {
+            if (this.currentDialogueBox.textDisplay.sounds.length > 0 && this.currentDialogueBox.textDisplay.sounds[0] != silenceSound) {
+                this.currentDialogueBox.textDisplay.sounds = [silenceSound];
+            } else if (this.currentDialogueBox.textDisplay.sounds.length == 0) {
+                this.currentDialogueBox.textDisplay.sounds = [silenceSound];
+            }
+        }
+
+        if (!watcherAwake || this.currentSpeaker == null) return;
+
+        var currentAnimation:String = "";
+        if (this.currentSpeaker.animation != null && this.currentSpeaker.animation.curAnim != null) {
+            currentAnimation = this.currentSpeaker.animation.curAnim.name;
+        }
+
+        if (currentAnimation != "" && currentAnimation != lastRegisteredAnim) {
+            lastRegisteredAnim = currentAnimation;
+            triggerDialogueUpdate(currentAnimation);
+            watcherAwake = false;
+        }
+    }
+
+    function triggerDialogueUpdate(animationName:String):Void {
+        var audioFile:String = "";
+        var imgBack:String = "";
+        var imgMiddle:String = "";
+        var imgFront:String = "";
+
+        var found:Bool = false;
+        if (this.cutscenesMap != null && ReflectUtil.hasField(this.cutscenesMap, animationName)) {
+            var cutData:Dynamic = ReflectUtil.field(this.cutscenesMap, animationName);
+            if (cutData != null) {
+                if (ReflectUtil.hasField(cutData, "layer1")) imgBack = ReflectUtil.field(cutData, "layer1");
+                if (ReflectUtil.hasField(cutData, "layer2")) imgMiddle = ReflectUtil.field(cutData, "layer2");
+                if (ReflectUtil.hasField(cutData, "layer3")) imgFront = ReflectUtil.field(cutData, "layer3");
+                if (ReflectUtil.hasField(cutData, "audio")) audioFile = ReflectUtil.field(cutData, "audio");
+                found = true;
+            }
+        }
+
+        if (!found && animationName.indexOf("CUT") != -1) {
+            audioFile = animationName;
+            var sceneName = StringTools.replace(animationName, "CUT", "SCENE");
+            imgBack = sceneName;
+            imgMiddle = "";
+            imgFront = sceneName + "-1";
+        }
+
+        updateDialogue(this.folderName, imgBack, imgMiddle, imgFront, audioFile);
+    }
+
+    public function updateDialogue(folderName:String, imgBack:String, imgMiddle:String, imgFront:String, audioName:String):Void {
+        if (currentBackImg != imgBack) {
+            processImage(layerBack, folderName, imgBack);
+            currentBackImg = imgBack;
+        }
+        
+        if (currentMiddleImg != imgMiddle) {
+            processImage(layerMiddle, folderName, imgMiddle);
+            currentMiddleImg = imgMiddle;
+        }
+        
+        if (currentFrontImg != imgFront) {
+            processImage(layerFront, folderName, imgFront);
+            currentFrontImg = imgFront;
+        }
+
+        playVoiceLine(folderName, audioName);
+        this.refresh();
+    }
+
+    private function processImage(sprite:FunkinSprite, folder:String, fileName:String):Void {
+        if (fileName == null || fileName == "") {
+            sprite.visible = false;
+            return;
+        }
+
+        var fullPath:String = 'dialogue/' + folder + '/' + fileName;
+
+        if (Assets.exists(Paths.image(fullPath), "IMAGE")) {
+            sprite.visible = true;
+            sprite.loadGraphic(Paths.image(fullPath));
+            sprite.scale.set(imageScale, imageScale);
+            sprite.updateHitbox();
+            sprite.screenCenter();
+            sprite.x += offsetX;
+            sprite.y += offsetY;
+        } else {
+            sprite.visible = false;
+        }
+    }
+
+    private function playVoiceLine(folder:String, audioName:String):Void {
+        if (audioName == null || audioName == "") {
+            if (currentVoiceLine != null) currentVoiceLine.stop();
+            return;
+        }
+
+        if (currentVoiceLine != null && currentVoiceLine.isPlaying) {
+            currentVoiceLine.stop();
+        }
+
+        var soundPath:String = 'dialogue/' + folder + '/' + audioName;
+
+        if (Assets.exists(Paths.sound(soundPath), "SOUND")) {
+            currentVoiceLine = FunkinSound.playOnce(Paths.sound(soundPath), 1, null, true);
+        }
+    }
+
+    override function onDestroy(event) {
+        super.onDestroy(event);
+        if (currentVoiceLine != null) {
+            currentVoiceLine.stop();
+        }
+    }
+}

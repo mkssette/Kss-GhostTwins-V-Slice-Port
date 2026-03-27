@@ -33,6 +33,9 @@ class EndingSubState extends MusicBeatSubState {
         if (currentDiff == 'hard') {
             diffString = "HARD";
         }
+        if (currentDiff == 'echo') {
+            diffString = "HARD";
+        }
         if (currentDiff == 'normal') {
             diffString = "NORMAL";
         }
