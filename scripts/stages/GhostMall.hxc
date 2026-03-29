@@ -42,8 +42,6 @@ class GhostMall extends Stage
   {
     super.addCharacter(character, charType);
 
-    if (FlxG.onMobile) return;
-
     var charKey:String = Std.string(charType);
     var rim:DropShadowShader = Reflect.field(charShaders, charKey);
 
@@ -78,8 +76,6 @@ class GhostMall extends Stage
   override function addProp(prop:StageProp, ?name:String = null)
   {
     super.addProp(prop, name);
-    
-    if (FlxG.onMobile) return;
 
     if (name != null && name != "back") {
       var rim:DropShadowShader = Reflect.field(propShaders, name);
