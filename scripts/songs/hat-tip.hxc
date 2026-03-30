@@ -2,6 +2,7 @@ import funkin.play.song.Song;
 import funkin.play.PlayState;
 import funkin.play.Countdown;
 import funkin.play.PlayStatePlaylist;
+import funkin.modding.module.ModuleHandler;
 
 class HatTip extends Song
 {
@@ -15,6 +16,16 @@ class HatTip extends Song
     override function onCreate(event:ScriptEvent):Void
     {
         super.onCreate(event);
+                var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
+        if (rpcModule != null) {
+            var rpc:Dynamic = rpcModule;
+            rpc.enable({
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
+                albumName: "twinsalbum",
+                iconName: "icon-twinsone"
+            });
+        }
         hasPlayedCutscene = false;
     }
 

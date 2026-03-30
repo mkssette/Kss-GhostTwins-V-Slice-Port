@@ -5,6 +5,7 @@ import funkin.play.PlayStatePlaylist;
 import funkin.ui.ScriptedMusicBeatSubState;
 import funkin.play.scoring.Scoring;
 import funkin.Highscore;
+import funkin.modding.module.ModuleHandler;
 
 class ScuffleSong extends Song
 {
@@ -15,6 +16,16 @@ class ScuffleSong extends Song
 
     override function onCreate(event:ScriptEvent):Void { 
         super.onCreate(event); 
+                        var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
+        if (rpcModule != null) {
+            var rpc:Dynamic = rpcModule;
+            rpc.enable({
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
+                albumName: "twinsalbum",
+                iconName: "icon-TwinsMerged"
+            });
+        }
         
         hasPlayedCutscene = false;
         endingShown = false; 

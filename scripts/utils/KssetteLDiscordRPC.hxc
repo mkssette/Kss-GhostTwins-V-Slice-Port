@@ -1,0 +1,109 @@
+package kssette.ghosttwins.port;
+
+import funkin.modding.module.Module;
+import funkin.play.PlayState;
+import flixel.FlxG;
+import Date;
+import Reflect;
+
+class KssetteLDiscordRPC extends Module {
+    public var activeForSong:Bool = false;
+    public var targetSong:String = "";
+
+    public var baseWebUrl:String = null;
+    public var repoUser:String = null;
+    public var repoPath:String = null;
+    public var customAlbum:String = null;
+    public var customIcon:String = null;
+
+    public function new() {
+        super("KssetteLDiscordRPC");
+    }
+
+    public function enable(?opciones:Dynamic) {
+        if (FlxG.onMobile) return;
+
+        this.activeForSong = true;
+
+        var state = PlayState.instance;
+        if (state != null && state.currentSong != null) {
+            targetSong = state.currentSong.id;
+        } else {
+            targetSong = "unknown";
+        }
+
+        this.baseWebUrl = null;
+        this.repoUser = null;
+        this.repoPath = null;
+        this.customAlbum = null;
+        this.customIcon = null;
+
+        if (opciones != null) {
+            if (opciones.baseUrl != null) this.baseWebUrl = opciones.baseUrl;
+            if (opciones.repoUser != null) this.repoUser = opciones.repoUser;
+            if (opciones.path != null) this.repoPath = opciones.path;
+            if (opciones.albumName != null) this.customAlbum = opciones.albumName;
+            if (opciones.iconName != null) this.customIcon = opciones.iconName;
+        }
+
+        applyRPC();
+    }
+
+    override public function onUpdate(event:Dynamic) {
+        super.onUpdate(event);
+        
+        if (FlxG.onMobile) return;
+
+        var state = PlayState.instance;
+
+        if (activeForSong && targetSong != "" && state != null && state.currentSong != null) {
+            if (state.currentSong.id != targetSong) {
+                activeForSong = false;
+                targetSong = "";
+                baseWebUrl = null;
+                repoUser = null;
+                repoPath = null;
+                customAlbum = null;
+                customIcon = null;
+                return;
+            }
+        }
+    }
+
+    function applyRPC() {
+        if (FlxG.onMobile) return;
+
+        var state = PlayState.instance;
+        if (state == null || state.currentChart == null) return;
+
+        var finalBaseUrl:String = null;
+
+        if (baseWebUrl != null) {
+            finalBaseUrl = baseWebUrl;
+        } else if (repoUser != null && repoPath != null) {
+            finalBaseUrl = "https://raw.githubusercontent.com/" + repoUser + "/" + repoPath + "/";
+        }
+
+        if (finalBaseUrl == null) return;
+
+        var currentAlbum:String = (customAlbum != null) ? customAlbum : state.currentChart.album;
+        var currentIcon:String = customIcon;
+
+        if (currentIcon == null) {
+            var dad = state.currentStage.getDad();
+            if (dad != null && dad._data != null && dad._data.healthIcon != null) {
+                currentIcon = dad._data.healthIcon.id;
+            }
+        }
+
+        var timeStamp:Float = Date.now().getTime();
+
+        if (currentAlbum != null && currentAlbum != "") {
+            state.discordRPCAlbum = finalBaseUrl + "albums/" + currentAlbum + ".png?t=" + timeStamp;
+        }
+
+        if (currentIcon != null && currentIcon != "") {
+            state.discordRPCIcon = finalBaseUrl + "icons/" + currentIcon + ".png?t=" + timeStamp;
+        }
+    }
+}

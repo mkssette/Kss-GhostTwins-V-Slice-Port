@@ -3,6 +3,7 @@ import funkin.play.PlayState;
 import funkin.play.Countdown;
 import funkin.play.PlayStatePlaylist;
 import funkin.ui.ScriptedMusicBeatSubState;
+import funkin.modding.module.ModuleHandler;
 
 class IllustriousSong extends Song
 {
@@ -13,6 +14,16 @@ class IllustriousSong extends Song
 
     override function onCreate(event:ScriptEvent):Void { 
         super.onCreate(event); 
+                        var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
+        if (rpcModule != null) {
+            var rpc:Dynamic = rpcModule;
+            rpc.enable({
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
+                albumName: "twinsalbum",
+                iconName: "icon-twinsfour"
+            });
+        }
         hasPlayedCutscene = false; 
     }
     

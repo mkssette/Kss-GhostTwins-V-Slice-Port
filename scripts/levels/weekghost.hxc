@@ -2,47 +2,84 @@ import funkin.ui.story.Level;
 import funkin.save.Save;
 import flixel.FlxG;
 import funkin.ui.story.StoryMenuState;
-import Reflect; 
+import Reflect;
+import Std;
+import funkin.Paths;
+import funkin.Assets;
+import funkin.util.Constants;
 
 class WeekGhostLevel extends Level
 {
-  function new() {
-    super('weekghost');
-  }
-
-
-  override function getSongs():Array<String> {
-    var songs:Array<String> = super.getSongs().copy();
-
-    songs.remove("illustrious");
-
-    if (Std.isOfType(FlxG.state, StoryMenuState)) {
-      var currentDiff = Reflect.field(FlxG.state, "currentDifficultyId");
-
-      if (currentDiff == "hard" || currentDiff == "echo") {
-        songs.push("illustrious");
-      }
-    }
-    else {
-      if (Save.instance.hasBeatenSong("illustrious")) {
-        songs.push("illustrious");
-      }
+    public function new()
+    {
+        super('weekghost');
+        
+        if (!Constants.DEFAULT_DIFFICULTY_LIST.contains("echo")) {
+            Constants.DEFAULT_DIFFICULTY_LIST.push("echo");
+        }
     }
 
-    return songs;
-  }
-
-  override function getSongDisplayNames(difficulty:String):Array<String> {
-    var songList:Array<String> = getSongs() ?? [];
-
-    if (!Save.instance.hasBeatenSong("illustrious")) {
-      songList.remove("illustrious");
+    override public function getDifficulties():Array<String>
+    {
+        return ["easy", "normal", "hard", "echo"];
     }
 
-    var songNameList:Array<String> = songList.map(function(songId:String) {
-      return Level.getSongDisplayName(songId, difficulty);
-    });
+    override public function getSongs():Array<String> {
+        var songs:Array<String> = super.getSongs().copy();
 
-    return songNameList;
-  }
+        songs.remove("illustrious");
+
+        if (Std.isOfType(FlxG.state, StoryMenuState)) {
+            var currentDiff = Reflect.field(FlxG.state, "currentDifficultyId");
+
+            if (currentDiff != "easy" && currentDiff != "normal") {
+                songs.push("illustrious");
+            }
+        }
+        else {
+            if (Save.instance.hasBeatenSong("illustrious")) {
+                songs.push("illustrious");
+            }
+        }
+
+        return songs;
+    }
+
+    override public function getSongDisplayNames(difficulty:String):Array<String> {
+        
+        if (Std.isOfType(FlxG.state, StoryMenuState)) {
+            var state = FlxG.state;
+            var diffSprite = Reflect.field(state, "difficultySprite");
+            
+            if (diffSprite != null) {
+                var imagePath:String = 'storymenu/difficulties/' + difficulty;
+                
+                if (Assets.exists(Paths.image(imagePath), "IMAGE")) {
+                    diffSprite.loadGraphic(Paths.image(imagePath));
+                    diffSprite.updateHitbox();
+                    
+                    var leftArrow = Reflect.field(state, "leftDifficultyArrow");
+                    var rightArrow = Reflect.field(state, "rightDifficultyArrow");
+                    
+                    if (leftArrow != null && rightArrow != null) {
+                        var centerPoint = (leftArrow.x + leftArrow.width + rightArrow.x) / 2;
+                        diffSprite.x = centerPoint - (diffSprite.width / 2);
+                        diffSprite.y = leftArrow.y;
+                    }
+                }
+            }
+        }
+
+        var songList:Array<String> = getSongs() ?? [];
+
+        if (difficulty == "easy" || difficulty == "normal" || !Save.instance.hasBeatenSong("illustrious")) {
+            songList.remove("illustrious");
+        }
+
+        var songNameList:Array<String> = songList.map(function(songId:String) {
+            return Level.getSongDisplayName(songId, difficulty);
+        });
+
+        return songNameList;
+    }
 }

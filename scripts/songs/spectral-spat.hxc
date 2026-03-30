@@ -15,6 +15,7 @@ import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.HitNoteScriptEvent;
 import funkin.modding.events.SongTimeScriptEvent;
 import funkin.modding.events.CountdownScriptEvent;
+import funkin.modding.module.ModuleHandler;
 
 class SpectralSpatSong extends Song {
   var hasPlayedCutscene:Bool = false;
@@ -117,6 +118,16 @@ class SpectralSpatSong extends Song {
 
   override function onCreate(event:ScriptEvent):Void {
     super.onCreate(event);
+                    var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
+        if (rpcModule != null) {
+            var rpc:Dynamic = rpcModule;
+            rpc.enable({
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
+                albumName: "twinsalbum",
+                iconName: "icon-twinstwo"
+            });
+        }
     hasPlayedCutscene = false;
     isAlt = false;
     setAlt(false);
