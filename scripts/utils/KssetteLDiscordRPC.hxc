@@ -1,4 +1,4 @@
-package.kssetteutils.gt;
+package kssetteutils.gt;
 
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
