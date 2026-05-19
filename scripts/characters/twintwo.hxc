@@ -4,6 +4,8 @@ import funkin.modding.events.ScriptEvent;
 
 class TwoSpectralSelf extends MultiSparrowCharacter {
 
+    public var animSuffix:String = "";
+
     function new() {
         super('twinstwo'); 
         
@@ -16,5 +18,24 @@ class TwoSpectralSelf extends MultiSparrowCharacter {
         if (this.alpha != 0.83) {
             this.alpha = 0.83;
         }
+    }
+
+    public function changeAnimationState(newSuffix:String) {
+        this.animSuffix = newSuffix;
+        this.dance(true);
+    }
+
+    override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false, reversed:Bool = false):Void {
+        var suffixName:String = name + animSuffix;
+        if (this.animSuffix != "" && this.hasAnimation(suffixName)) {
+            super.playAnimation(suffixName, restart, ignoreOther, reversed);
+        } else {
+            super.playAnimation(name, restart, ignoreOther, reversed);
+        }
+    }
+
+    override function resetCharacter(resetCamera:Bool = true):Void {
+        this.animSuffix = "";
+        super.resetCharacter(resetCamera);
     }
 }

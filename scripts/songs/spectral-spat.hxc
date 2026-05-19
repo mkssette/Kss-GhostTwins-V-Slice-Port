@@ -19,7 +19,6 @@ import funkin.modding.module.ModuleHandler;
 
 class SpectralSpatSong extends Song {
   var hasPlayedCutscene:Bool = false;
-  var isAlt:Bool = false;
 
   public function new() {
     super('spectral-spat');
@@ -52,7 +51,10 @@ class SpectralSpatSong extends Song {
   override function onBeatHit(event:SongTimeScriptEvent) {
     super.onBeatHit(event);
     if (event.beat == 288) {
-      setAlt(true);
+      var dad:Dynamic = PlayState.instance.currentStage.getDad();
+      if (dad != null) {
+        dad.changeAnimationState('-alt');
+      }
       PlayState.instance.camGame.flash(0xFFFFFFFF, 1);
       trace('goop phase');
     }
@@ -63,57 +65,13 @@ class SpectralSpatSong extends Song {
       PlayState.instance.camGame.shake(0.010, 0.2);
       PlayState.instance.camHUD.shake(0.005, 0.2);
     }
-
-    var dad = PlayState.instance.currentStage.getDad();
     
-    if (dad != null && !event.note.noteData.getMustHitNote() && isAlt) {
-        
-        var suffix:String = (event.note.isHoldNote) ? 'hold-alt' : 'alt';
-        
-        dad.holdTimer = 0;
-        
-        dad.playSingAnimation(event.note.noteData.getDirection(), false, suffix);
-
-        event.cancel();
-        PlayState.instance.opponentStrumline.hitNote(event.note);
-        
-        if (event.note.holdNoteSprite != null) {
-            PlayState.instance.opponentStrumline.playNoteHoldCover(event.note.holdNoteSprite);
-        }
-    } else {
-        super.onNoteHit(event);
-    }
-  }
-
-  override function onUpdate(event:ScriptEvent) {
-    super.onUpdate(event);
-
-    if (isAlt) {
-        var dad = PlayState.instance.currentStage.getDad();
-        if (dad != null) {
-            dad.idleSuffix = '-alt';
-        }
-    }
-  }
-
-  function setAlt(flag:Bool) {
-    var dad = PlayState.instance.currentStage.getDad();
-    if (dad == null) return;
-
-    if (flag) {
-      dad.idleSuffix = '-alt';
-      isAlt = true;
-    } else {
-      dad.idleSuffix = '';
-      isAlt = false;
-    }
+    super.onNoteHit(event);
   }
 
   override function onSongRetry(event:ScriptEvent) {
     super.onSongRetry(event);
     hasPlayedCutscene = true;
-    isAlt = false;
-    setAlt(false);
   }
 
   override function onCreate(event:ScriptEvent):Void {
@@ -129,7 +87,5 @@ class SpectralSpatSong extends Song {
             });
         }
     hasPlayedCutscene = false;
-    isAlt = false;
-    setAlt(false);
   }
 }

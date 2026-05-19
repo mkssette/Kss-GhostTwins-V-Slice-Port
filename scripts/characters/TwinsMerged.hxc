@@ -30,11 +30,7 @@ class TwinsMerged extends SparrowCharacter {
     var trailInterval:Float = 0.05;
     var trailTimer:Float = 0;
 
-    var windowShakeDuration:Float = 0;
     var windowShakeIntensity:Int = 30;
-    var originalWindowX:Int = 0;
-    var originalWindowY:Int = 0;
-    var isShakingWindow:Bool = false;
 
     var mobileShakeDuration:Float = 0;
     
@@ -52,6 +48,9 @@ class TwinsMerged extends SparrowCharacter {
     var shakePower:Float = 30;  
 
     var hapticTween:FlxTween;
+    
+    var diffMultiplier:Float = 1.0;
+    var originalTitle:String = "";
 
     function new() {
         super('TwinsMerged');
@@ -60,19 +59,29 @@ class TwinsMerged extends SparrowCharacter {
     override function onCreate(event:ScriptEvent) {
         super.onCreate(event);
 
+        var diff = PlayState.instance.currentDifficulty;
+        if (diff == "easy") diffMultiplier = 0.5;
+        else if (diff == "normal") diffMultiplier = 1.0;
+        else if (diff == "hard") diffMultiplier = 2.0;
+        else if (diff == "echo") diffMultiplier = 3.5;
+        else if (diff == "hell") diffMultiplier = 5.0;
+        else diffMultiplier = 1.0;
+
         if (!FlxG.onMobile) {
+            originalTitle = Application.current.window.title;
+
             if (Application.current.window.fullscreen) Application.current.window.fullscreen = false;
             if (Application.current.window.borderless) Application.current.window.borderless = false;
-            if (FlxG.stage.window.maximized) FlxG.stage.window.maximized = false;
+            if (Application.current.window.maximized) Application.current.window.maximized = false;
             
             new FlxTimer().start(0.2, function(tmr:FlxTimer) {
                 var screenHeight:Int = Application.current.window.display.bounds.height;
                 var screenWidth:Int = Application.current.window.display.bounds.width;
                 var newHeight:Int = Std.int(screenHeight * 0.6);
                 var newWidth:Int = Std.int(newHeight * (16 / 9));
-                FlxG.stage.window.resize(newWidth, newHeight);
-                FlxG.stage.window.x = Std.int((screenWidth - newWidth) / 2);
-                FlxG.stage.window.y = Std.int((screenHeight - newHeight) / 2);
+                Application.current.window.resize(newWidth, newHeight);
+                Application.current.window.x = Std.int((screenWidth - newWidth) / 2);
+                Application.current.window.y = Std.int((screenHeight - newHeight) / 2);
             });
         }
     }
@@ -80,11 +89,24 @@ class TwinsMerged extends SparrowCharacter {
     override function onSongRetry(event:ScriptEvent) {
         super.onSongRetry(event);
         resetMobilePositions();
+        restoreWindowTitle();
     }
 
     override function onGameOver(event:ScriptEvent) {
         super.onGameOver(event);
         resetMobilePositions();
+        restoreWindowTitle();
+    }
+
+    override function onSongEnd(event:ScriptEvent) {
+        super.onSongEnd(event);
+        restoreWindowTitle();
+    }
+
+    function restoreWindowTitle() {
+        if (!FlxG.onMobile && originalTitle != "") {
+            Application.current.window.title = originalTitle;
+        }
     }
 
     function resetMobilePositions() {
@@ -113,10 +135,8 @@ class TwinsMerged extends SparrowCharacter {
             var screenH:Int = display.height;
             var newHeight:Int = Std.int(screenH * 0.6);
             var newWidth:Int = Std.int(newHeight * (16 / 9));
-            FlxG.stage.window.x = Std.int((screenW - newWidth) / 2);
-            FlxG.stage.window.y = Std.int((screenH - newHeight) / 2);
-            originalWindowX = FlxG.stage.window.x;
-            originalWindowY = FlxG.stage.window.y;
+            Application.current.window.x = Std.int((screenW - newWidth) / 2);
+            Application.current.window.y = Std.int((screenH - newHeight) / 2);
         }
     }
 
@@ -137,17 +157,31 @@ class TwinsMerged extends SparrowCharacter {
             if (!FlxG.onMobile) {
                 state.camHUD.shake(0.015, 0.2);
                 if (Application.current.window.fullscreen) Application.current.window.fullscreen = false;
-                if (FlxG.stage.window.maximized) FlxG.stage.window.maximized = false;
+                if (Application.current.window.maximized) Application.current.window.maximized = false;
                 
-                if (!isShakingWindow) {
-                    originalWindowX = FlxG.stage.window.x;
-                    originalWindowY = FlxG.stage.window.y;
-                    isShakingWindow = true;
-                }
+                var intensity:Int = Std.int(windowShakeIntensity * diffMultiplier);
+                var newX:Int = Application.current.window.x + FlxG.random.int(-intensity, intensity);
+                var newY:Int = Application.current.window.y + FlxG.random.int(-intensity, intensity);
+                
+                var display = Application.current.window.display.bounds;
+                var maxX:Int = display.width - Application.current.window.width;
+                var maxY:Int = display.height - Application.current.window.height;
+                
+                if (newX < 0) newX = 0;
+                if (newX > maxX) newX = maxX;
+                if (newY < 0) newY = 0;
+                if (newY > maxY) newY = maxY;
 
-                windowShakeDuration = 0.2;
-                FlxG.stage.window.x = originalWindowX + FlxG.random.int(-windowShakeIntensity, windowShakeIntensity);
-                FlxG.stage.window.y = originalWindowY + FlxG.random.int(-windowShakeIntensity, windowShakeIntensity);
+                Application.current.window.x = newX;
+                Application.current.window.y = newY;
+
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+                var randomTitle = "";
+                var titleLength = FlxG.random.int(30, 80);
+                for (i in 0...titleLength) {
+                    randomTitle += chars.charAt(FlxG.random.int(0, chars.length - 1));
+                }
+                Application.current.window.title = randomTitle;
             } else {
                 triggerEarthquakeAnim(0.2);
 
@@ -243,16 +277,6 @@ class TwinsMerged extends SparrowCharacter {
             }
         }
 
-        if (windowShakeDuration > 0 && !FlxG.onMobile) {
-            windowShakeDuration -= elapsed;
-
-            if (windowShakeDuration <= 0) {
-                isShakingWindow = false;
-                FlxG.stage.window.x = originalWindowX;
-                FlxG.stage.window.y = originalWindowY;
-            }
-        }
-
         if (FlxG.onMobile) { 
             var playerStrum = PlayState.instance.playerStrumline;
             var oppStrum = PlayState.instance.opponentStrumline;
@@ -292,10 +316,7 @@ class TwinsMerged extends SparrowCharacter {
 
         if(hapticTween != null) hapticTween.cancel();
 
-        if (isShakingWindow && !FlxG.onMobile) {
-            FlxG.stage.window.x = originalWindowX;
-            FlxG.stage.window.y = originalWindowY;
-        }
+        restoreWindowTitle();
         
         if (FlxG.onMobile) {
             if (anchorPlayerX != -999 && PlayState.instance.playerStrumline != null) {
