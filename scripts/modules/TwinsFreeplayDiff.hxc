@@ -1,4 +1,3 @@
-import funkin.util.Constants;
 import funkin.modding.module.Module;
 
 class echodiff extends Module
@@ -7,12 +6,9 @@ class echodiff extends Module
   {
     super('echodiff');
   }
-  override function onCreate(event:SubStateScriptEvent)
-  {
-    super.onCreate(event);
-
-    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("echo");
-
-    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("hell");
-  }
+  
+  // OBSOLETO:
+  // Este módulo inyectaba dificultades extra globalmente, lo cual puede romper otros mods.
+  // Ahora las dificultades 'echo' y 'hell' se definen localmente en los niveles de DoodleUtil 
+  // (weekghost.hxc y weekghostxmas.hxc)
 }

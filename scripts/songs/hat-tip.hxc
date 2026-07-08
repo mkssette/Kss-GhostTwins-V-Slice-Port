@@ -1,64 +1,28 @@
-import funkin.play.song.Song;
+import doodleutil.classes.DoodleSong;
 import funkin.play.PlayState;
 import funkin.play.Countdown;
 import funkin.play.PlayStatePlaylist;
 import funkin.modding.module.ModuleHandler;
 
-class HatTip extends Song
+class HatTip extends DoodleSong
 {
-    var hasPlayedCutscene:Bool;
-
     public function new()
     {
-        super('hat-tip');
+        super('hat-tip', {
+            discordRPC: {
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord",
+                albumName: "twinsalbum",
+                iconName: "icon-twinsone"
+            },
+            cutscenes: {
+                start: { type: "novel" }
+            }
+        });
     }
 
     override function onCreate(event:ScriptEvent):Void
     {
         super.onCreate(event);
-                var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
-        if (rpcModule != null) {
-            var rpc:Dynamic = rpcModule;
-            rpc.enable({
-                repoUser: "mkssette",
-                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
-                albumName: "twinsalbum",
-                iconName: "icon-twinsone"
-            });
-        }
-        hasPlayedCutscene = false;
-    }
-
-    override function onSongRetry(event:ScriptEvent)
-    {
-        super.onSongRetry(event);
-        hasPlayedCutscene = true;
-    }
-
-    public override function onCountdownStart(event:CountdownScriptEvent):Void
-    {
-        super.onCountdownStart(event);
-        if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
-        if (PlayState.instance.isChartingMode && !hasPlayedCutscene) hasPlayedCutscene = true;
-
-        
-        if (!hasPlayedCutscene)
-        {
-
-            event.cancel();
-
-
-            hasPlayedCutscene = true;
-
-            PlayState.instance.startConversation('hat-tip');
-        }
-    }
-
-    public override function onDialogueEnd()
-    {
-        super.onDialogueEnd();
-        
-
-        Countdown.performCountdown();
     }
 }

@@ -1,0 +1,161 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 1,
+    "color": "#000000"
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT1",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Mira, esto no nos lleva a nada. Solo-" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT2",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "No! TIENE que funcionar ahora! Estoy segura!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT3",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Marie, podrias dejar de interrumpirme y escuchar?! O sea, solo porque eres 4 minutos mayor, no significa que tengas que mandarme todo el tiempo!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT4",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Yo?! Mandona?! Tu eres el que siempre se esta quejando, asi que, por que no te calmas y le das una oportunidad a esto?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT5",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Hemos estado atrapados aqui por decadas! POR SUPUESTO QUE ESTOY MOLESTO!!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT6",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "B- Beep skidoo?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT7",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Oigan... Eh... chicos?-" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT8",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Estoy harto de tener esta falsa esperanza por tanto tiempo!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT9",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "OYE!", "HE ESTADO HACIENDO MI MEJOR ESFUERZO POR LOS DOS!!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT10",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "BUENO, TAL VEZ NO TE ESTAS ESFORZANDO LO SUFICIENTE!!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT11",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT12",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bap-?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT13",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "..." ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT14",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "Q... que... e-eh...?!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT15",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "E-Esto... no deberia..." ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT16",
+      "box": "twins",
+      "boxAnimation": "talk-tanrie",
+      "speed": 0.05,
+      "text": [ "D... duele...!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT17",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Vamos BF! Solo sigue cantando!" ]
+    },
+    {
+      "speaker": "scuffle-speaker",
+      "speakerAnimation": "CUT18",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bop beep bo!" ]
+    }
+  ]
+}

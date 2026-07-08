@@ -1,0 +1,14 @@
+import doodleutil.classes.DoodleStage;
+
+class GhostOperaStageOld extends DoodleStage {
+    function new() {
+        super('ghostoperastage_old');
+        
+        this.NoteCameraDisplacement = {
+            enabled: true,
+            strength: 50.0,
+            velocity: 1.5,
+            speed: 0.7
+        };
+    }
+}

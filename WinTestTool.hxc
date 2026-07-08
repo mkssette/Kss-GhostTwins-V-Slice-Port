@@ -1,0 +1,73 @@
+import flixel.FlxG;
+import funkin.play.PlayState;
+import funkin.Highscore;
+import funkin.modding.module.Module; 
+
+class WinTestTool extends Module
+{
+    public function new() {
+        super('WinTestTool');
+    }
+
+    override function onUpdate(elapsed:Float) {
+        super.onUpdate(elapsed);
+        if (PlayState.instance == null || PlayState.instance.isInCutscene) return;
+
+        if (FlxG.keys.justPressed.X) forceWin('SHIT');
+        if (FlxG.keys.justPressed.C) forceWin('GOOD');
+        if (FlxG.keys.justPressed.V) forceWin('GREAT');
+        if (FlxG.keys.justPressed.B) forceWin('EXCELLENT');
+        if (FlxG.keys.justPressed.N) forceWin('PERFECT');
+    }
+
+    function forceWin(targetRank:String) {
+        trace("--- WIN TOOL: SKIPPING WITH RANK " + targetRank + " ---");
+        PlayState.instance.health = 2.0;
+
+        if (PlayState.instance.playerStrumline != null) {
+            PlayState.instance.playerStrumline.notes.forEachAlive(function(note) { note.kill(); });
+            PlayState.instance.playerStrumline.holdNotes.forEachAlive(function(note) { note.kill(); });
+        }
+
+        var tallies = Highscore.tallies;
+        tallies.totalNotes = 100;
+        tallies.totalNotesHit = 100;
+        tallies.missed = 0;
+        tallies.shit = 0;
+        tallies.bad = 0;
+        tallies.good = 0;
+        tallies.sick = 0;
+        tallies.combo = 100;
+        tallies.maxCombo = 100;
+
+        switch(targetRank) {
+            case 'SHIT':
+               tallies.good = 3;
+                tallies.bad = 60;
+                tallies.shit = 40;
+                PlayState.instance.songScore = 1000;
+                
+            case 'GOOD': 
+                tallies.sick = 30;  
+                tallies.good = 45; 
+                tallies.bad = 20;   
+                PlayState.instance.songScore = 20000;
+
+            case 'GREAT':
+                tallies.sick = 55; 
+                tallies.good = 25;
+                PlayState.instance.songScore = 60000;
+
+            case 'EXCELLENT':
+                tallies.sick = 65; 
+                tallies.good = 25;
+                PlayState.instance.songScore = 90000;
+
+            case 'PERFECT', 'PERFECT_GOLD':
+                tallies.sick = 100;
+                PlayState.instance.songScore = 100000;
+        }
+
+        if (FlxG.sound.music != null) FlxG.sound.music.time = FlxG.sound.music.length - 100;
+    }
+}

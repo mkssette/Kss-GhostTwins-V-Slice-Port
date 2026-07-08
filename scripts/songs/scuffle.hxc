@@ -1,56 +1,32 @@
-import funkin.play.song.Song;
+import doodleutil.classes.DoodleSong;
+import doodleutil.classes.DoodleUnlockAPI;
 import funkin.play.PlayState;
 import funkin.play.Countdown;
 import funkin.play.PlayStatePlaylist;
 import funkin.ui.ScriptedMusicBeatSubState;
-import funkin.play.scoring.Scoring;
-import funkin.Highscore;
-import funkin.modding.module.ModuleHandler;
 
-class ScuffleSong extends Song
+class ScuffleSong extends DoodleSong
 {
-    var hasPlayedCutscene:Bool;
     var endingShown:Bool = false;
 
-    public function new() { super('scuffle'); }
+    public function new() { 
+        super('scuffle', {
+            discordRPC: {
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord",
+                albumName: "twinsalbum",
+                iconName: "icon-TwinsMerged"
+            },
+            customDifficulties: ["hell"],
+            cutscenes: {
+                start: { type: "novel" }
+            }
+        }); 
+    }
 
     override function onCreate(event:ScriptEvent):Void { 
         super.onCreate(event); 
-                        var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
-        if (rpcModule != null) {
-            var rpc:Dynamic = rpcModule;
-            rpc.enable({
-                repoUser: "mkssette",
-                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
-                albumName: "twinsalbum",
-                iconName: "icon-TwinsMerged"
-            });
-        }
-        
-        hasPlayedCutscene = false;
         endingShown = false; 
-    }
-
-    override function onSongRetry(event:ScriptEvent) { 
-        super.onSongRetry(event); 
-        hasPlayedCutscene = true;
-    }
-
-    public override function onCountdownStart(event:CountdownScriptEvent):Void {
-        super.onCountdownStart(event);
-        if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
-        if (PlayState.instance.isChartingMode && !hasPlayedCutscene) hasPlayedCutscene = true;
-        
-        if (!hasPlayedCutscene) {
-            event.cancel();
-            hasPlayedCutscene = true;
-            PlayState.instance.startConversation('scuffle');
-        }
-    }
-
-    public override function onDialogueEnd() { 
-        super.onDialogueEnd(); 
-        Countdown.performCountdown();
     }
 
     override function onSongEnd(event:ScriptEvent) {
@@ -61,21 +37,12 @@ class ScuffleSong extends Song
         
         if (endingShown) return;
 
-        var rankString:String = "SHIT";
-        try {
-            var songData = { score: PlayState.instance.songScore, tallies: Highscore.tallies };
-            rankString = "" + Scoring.calculateRank(songData);
-        } catch(e:Dynamic) {}
+        var rankString:String = DoodleUnlockAPI.getCurrentSongRank();
 
         var isHard:Bool = (PlayStatePlaylist.campaignDifficulty == 'hard' || PlayStatePlaylist.campaignDifficulty == 'echo');
         
         if (isHard) {
-            var passedCheck:Bool = false;
-            
-            if (rankString == "PERFECT_GOLD") passedCheck = true;
-            if (rankString == "PERFECT")      passedCheck = true;
-            if (rankString == "EXCELLENT")    passedCheck = true;
-            if (rankString == "GREAT")        passedCheck = true;
+            var passedCheck:Bool = ["PERFECT_GOLD", "PERFECT", "EXCELLENT", "GREAT"].contains(rankString);
 
             if (passedCheck) {
                 return;

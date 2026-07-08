@@ -1,4 +1,6 @@
-class ScuffleConversation extends KssetteNovelDialogues {
+import doodleutil.dialogue.DoodleNovelDialogues;
+
+class ScuffleConversation extends DoodleNovelDialogues {
     public function new() {
         super('scuffle', null, {
             folder: "scuffle",

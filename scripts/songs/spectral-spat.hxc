@@ -2,7 +2,7 @@ import funkin.audio.FunkinSound;
 import flixel.FlxG;
 import funkin.graphics.FunkinSprite;
 import flixel.FlxSprite;
-import funkin.play.song.Song;
+import doodleutil.classes.DoodleSong;
 import funkin.play.PlayState;
 import funkin.util.Constants;
 import funkin.play.Countdown;
@@ -17,35 +17,24 @@ import funkin.modding.events.SongTimeScriptEvent;
 import funkin.modding.events.CountdownScriptEvent;
 import funkin.modding.module.ModuleHandler;
 
-class SpectralSpatSong extends Song {
-  var hasPlayedCutscene:Bool = false;
-
+class SpectralSpatSong extends DoodleSong {
   public function new() {
-    super('spectral-spat');
+    super('spectral-spat', {
+        discordRPC: {
+            repoUser: "mkssette",
+            path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord",
+            albumName: "twinsalbum",
+            iconName: "icon-twinstwo"
+        },
+        cutscenes: {
+            start: { type: "novel" }
+        }
+    });
   }
 
   function onSongStart(event:ScriptEvent):Void {
     FunkinMemory.cacheTexture(Paths.image('characters/twinsTwoGoop'));
     super.onSongStart(event);
-  }
-
-  public override function onCountdownStart(event:CountdownScriptEvent):Void {
-    super.onCountdownStart(event);
-    if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
-    if (PlayState.instance.isChartingMode && !hasPlayedCutscene) hasPlayedCutscene = true;
-
-    if (!hasPlayedCutscene) {
-      event.cancel();
-      hasPlayedCutscene = true;
-      PlayState.instance.startConversation('spectral-spat');
-    }
-  }
-
-  public override function onDialogueEnd()
-  {
-    super.onDialogueEnd();
-
-    Countdown.performCountdown();
   }
 
   override function onBeatHit(event:SongTimeScriptEvent) {
@@ -69,23 +58,7 @@ class SpectralSpatSong extends Song {
     super.onNoteHit(event);
   }
 
-  override function onSongRetry(event:ScriptEvent) {
-    super.onSongRetry(event);
-    hasPlayedCutscene = true;
-  }
-
   override function onCreate(event:ScriptEvent):Void {
     super.onCreate(event);
-                    var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
-        if (rpcModule != null) {
-            var rpc:Dynamic = rpcModule;
-            rpc.enable({
-                repoUser: "mkssette",
-                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
-                albumName: "twinsalbum",
-                iconName: "icon-twinstwo"
-            });
-        }
-    hasPlayedCutscene = false;
   }
 }

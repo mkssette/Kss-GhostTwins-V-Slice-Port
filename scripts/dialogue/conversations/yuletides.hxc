@@ -1,6 +1,8 @@
-class YuletidesConversation extends KssetteBackgroundDialogue {
+import doodleutil.dialogue.DoodleBackgroundDialogues;
+
+class YuletidesConversation extends DoodleBackgroundDialogues {
     public function new() {
-        super('yuletides', {
+        super('yuletides', null, {
             folder: "yuletides",
             lines: {
                 "1": { bg: "BACK1", audio: "AUDIO1" },

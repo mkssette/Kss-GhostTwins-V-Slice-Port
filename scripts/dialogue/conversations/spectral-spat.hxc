@@ -1,4 +1,6 @@
-class SpectralSpatConversation extends KssetteNovelDialogues {
+import doodleutil.dialogue.DoodleNovelDialogues;
+
+class SpectralSpatConversation extends DoodleNovelDialogues {
     public function new() {
         super('spectral-spat', null, {
             folder: "spectral-spat",

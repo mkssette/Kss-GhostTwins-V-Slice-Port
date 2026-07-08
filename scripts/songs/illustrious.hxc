@@ -1,51 +1,48 @@
-import funkin.play.song.Song;
+import doodleutil.classes.DoodleSong;
 import funkin.play.PlayState;
 import funkin.play.Countdown;
 import funkin.play.PlayStatePlaylist;
 import funkin.ui.ScriptedMusicBeatSubState;
 import funkin.modding.module.ModuleHandler;
+import doodleutil.classes.DoodleUnlockAPI;
 
-class IllustriousSong extends Song
+class IllustriousSong extends DoodleSong
 {
-    var hasPlayedCutscene:Bool;
     var endingShown:Bool = false;
 
-    public function new() { super('illustrious'); }
+    public function new() { 
+        super('illustrious', {
+            discordRPC: {
+                repoUser: "mkssette",
+                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord",
+                albumName: "twinsalbum",
+                iconName: "icon-twinsfour"
+            },
+            customUnlockCheck: function() {
+                var hardRank = DoodleUnlockAPI.getSavedSongRank("scuffle", "hard");
+                var echoRank = DoodleUnlockAPI.getSavedSongRank("scuffle", "echo");
+                
+                var validRanks = ["PERFECT_GOLD", "PERFECT", "EXCELLENT", "GREAT"];
+                
+                if (validRanks.contains(hardRank) || validRanks.contains(echoRank)) {
+                    return true;
+                }
+                
+                if (DoodleUnlockAPI.hasBeatenSong("illustrious")) {
+                    return true;
+                }
+                
+                
+                return DoodleUnlockAPI.checkFlag("illustrious_unlocked");
+            },
+            cutscenes: {
+                start: { type: "novel" }
+            }
+        }); 
+    }
 
     override function onCreate(event:ScriptEvent):Void { 
         super.onCreate(event); 
-                        var rpcModule = ModuleHandler.getModule("KssetteLDiscordRPC");
-        if (rpcModule != null) {
-            var rpc:Dynamic = rpcModule;
-            rpc.enable({
-                repoUser: "mkssette",
-                path: "Kss-GhostTwins-V-Slice-Port/Port-art/discord/",
-                albumName: "twinsalbum",
-                iconName: "icon-twinsfour"
-            });
-        }
-        hasPlayedCutscene = false; 
-    }
-    
-    override function onSongRetry(event:ScriptEvent) { 
-        super.onSongRetry(event); 
-        hasPlayedCutscene = true; 
-    }
-
-    public override function onCountdownStart(event:CountdownScriptEvent):Void {
-        super.onCountdownStart(event);
-        if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
-        if (PlayState.instance.isChartingMode && !hasPlayedCutscene) hasPlayedCutscene = true;
-        if (!hasPlayedCutscene) {
-            event.cancel();
-            hasPlayedCutscene = true;
-            PlayState.instance.startConversation('illustrious');
-        }
-    }
-
-    public override function onDialogueEnd() { 
-        super.onDialogueEnd(); 
-        Countdown.performCountdown(); 
     }
 
     override function onSongEnd(event:ScriptEvent) {

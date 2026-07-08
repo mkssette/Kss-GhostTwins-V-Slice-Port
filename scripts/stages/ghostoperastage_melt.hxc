@@ -1,12 +1,12 @@
 import funkin.play.PlayState;
 import funkin.modding.events.ScriptEvent;
-import funkin.play.stage.Stage;
+import doodleutil.classes.DoodleStage;
 import flixel.FlxG;
 import GhostNoiseShader;
 import openfl.filters.ShaderFilter;
 import funkin.Paths;
 
-class GhostOperaMeltStage extends Stage {
+class GhostOperaMeltStage extends DoodleStage {
 
     var noiseShader:GhostNoiseShader;
     var noiseFilter:ShaderFilter;
@@ -16,6 +16,13 @@ class GhostOperaMeltStage extends Stage {
 
     function new() {
         super("ghostoperastage_melt");
+        
+        this.NoteCameraDisplacement = {
+            enabled: true,
+            strength: 50.0,
+            velocity: 1.5,
+            speed: 0.7
+        };
     }
 
     override function onCreate(event:ScriptEvent) {

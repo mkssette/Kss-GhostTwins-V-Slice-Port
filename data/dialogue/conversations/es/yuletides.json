@@ -1,0 +1,254 @@
+{
+  "version": "1.0.0",
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 0.5,
+    "color": "#000000"
+  },
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+  "dialogue": [
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "spoon-bf",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        "...y ahi es cuando King Bach saca una cucha-"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "notice-gf",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [
+        "Shh, espera carino, no son esos los dos gemelos que salvamos de esa orquesta hace unos meses?!"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "happy-gf",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [
+        "Vamos a saludarlos!!"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "happy-marie",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Saludos cordiales, queridos BF y GF!!"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "beep-bf",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        "beep bop"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "oh-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        "Oh? Que estamos haciendo? Bueno, ya que el pasillo esta siendo renovado, decidimos continuar cantando en las calles! Y que mejor manera de celebrar la temporada navidena que cantar villancicos en el centro comercial!"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "beep-bf",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        "bap!!"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "oh-gf",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [
+        "Que dulce idea! Por cierto, de donde sacaron esa ropa nueva?"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "oh-marie",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Estas? Jewel nos ayudo a elegirlas! Genial, verdad?"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "hmm-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        "Si, pero la cola era realmente necesaria"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "tail-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Aww, pero te ves muy lindo como un renito~!!"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "tail-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        "N-No me lo recuerdes-"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "bop-bf",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        "bop beep"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "oh-gf",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [
+        "Que dices, amor? Quieres unirteles?"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "oh-marie",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Hmm, supongo que aun tenemos tiempo para una cancion, asi que-"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "happy-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        "Veamos cuanto han mejorado desde la ultima vez que nos vimos!!"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "indubitably-marie",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Jeje, indudablemente."
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "short-marie",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [
+        "Bueno, tu estatura no ha cambiado desde entonces"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "spingfriend",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        ""
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "hmm-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        ""
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "oh-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        ""
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "happy-tanner",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [
+        "Oh! Puedes pararte en esta caja, asi podremos mirarnos mas facilmente!"
+      ]
+    },
+    {
+      "speaker": "gfbf-speakers",
+      "speakerAnimation": "bop-bf",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [
+        "Beep boo!"
+      ]
+    },
+    {
+      "speaker": "twinsxmas-speakers",
+      "speakerAnimation": "merry-marie",
+      "box": "twins",
+      "boxAnimation": "talk-tandm",
+      "speed": 0.05,
+      "text": [
+        "Ahora bien, Celebremos las fiestas!!"
+      ]
+    }
+  ]
+}

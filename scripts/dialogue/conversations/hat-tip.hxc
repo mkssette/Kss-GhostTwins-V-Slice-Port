@@ -1,4 +1,6 @@
-class HatTipConversation extends KssetteNovelDialogues {
+import doodleutil.dialogue.DoodleNovelDialogues;
+
+class HatTipConversation extends DoodleNovelDialogues {
     public function new() {
         super('hat-tip', null, {
             folder: "hat-tip",

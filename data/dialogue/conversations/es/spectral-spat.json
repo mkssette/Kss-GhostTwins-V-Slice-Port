@@ -1,0 +1,129 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 1,
+    "color": "#000000"
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT1",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Bueno, eso sin duda fue divertido!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT2",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Si!! Gracias por tu ayuda boyfriend!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT3",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT4",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Bueno, nosotros ya nos vamos!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT5",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Eh-" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT6",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Marie. Dijiste que esta vez funcionaria." ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT7",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Dale unos segunditos Tan!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT8",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "No!! Acabamos de desperdiciar nuestro tiempo otra vez!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT9",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "No tienes idea de lo que estas hablando!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT10",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Deja de ser tan aguafiestas!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT11",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Es tu culpa por no confiar en mi!!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT12",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "MI culpa?!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT13",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep!" ]
+    },
+    {
+      "speaker": "spectral-spat-speaker",
+      "speakerAnimation": "CUT14",
+      "box": "twins",
+      "boxAnimation": "talk-tandm",
+      "speed": 0.05,
+      "text": [ "SILENCIO!!" ]
+    }
+  ]
+}

@@ -2,11 +2,9 @@ import flixel.FlxG;
 import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
-import funkin.Highscore;
+import doodleutil.classes.DoodleUnlockAPI;
 import funkin.play.PlayState;
 import funkin.play.PlayStatePlaylist;
-import funkin.play.scoring.Scoring;
-import funkin.save.Save;
 import funkin.ui.MusicBeatSubState;
 import funkin.graphics.FunkinSprite;
 import funkin.audio.FunkinSound;
@@ -22,10 +20,7 @@ class EndingSubState extends MusicBeatSubState {
     override function create() {
         super.create();
 
-        try {
-            var levelScoreData = { score: PlayStatePlaylist.campaignScore, tallies: Highscore.talliesLevel };
-            rank = "" + Scoring.calculateRank(levelScoreData);
-        } catch(e:Dynamic) { rank = "SHIT"; }
+        rank = DoodleUnlockAPI.getCurrentLevelRank();
 
         var currentDiff = PlayStatePlaylist.campaignDifficulty;
         var diffString:String = "UNKNOWN";

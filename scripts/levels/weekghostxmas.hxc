@@ -1,0 +1,9 @@
+import doodleutil.classes.DoodleLevel;
+
+class WeekGhostXmasLevel extends DoodleLevel {
+    public function new() {
+        super('weekghostxmas', {
+            difficulties: ["easy", "normal", "hard", "echo"]
+        });
+    }
+}

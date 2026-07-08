@@ -1,0 +1,217 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 1,
+    "color": "#000000"
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT1",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Eugh... hff..." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT2",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT3",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT4",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Oh Dios mio- Tanner?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT5",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Estas bien?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT6",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "H-Hola... Estoy bien... Este... dolor raro en mi pecho ya se fue, asi que eso es genial-" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT7",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT8",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Yo igual. Je... lamento mucho lo de antes... y lo de hace todos esos anos... Debi haberte salvado antes..." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT9",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT10",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Esta bien... Gracias, hermana." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT11",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Bap" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT12",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Uy! Casi lo olvido, Muchas gracias BF!! Al fin tenemos la oportunidad de estar vivos otra vez!!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT13",
+      "box": "twins",
+      "boxAnimation": "talk-none",
+      "speed": 0.05,
+      "text": [ "" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT14",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Bueno, parece que el ruido que hicimos atrajo a algunas personas!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT15",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep skebepbo!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT16",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Bueno, tenemos publico ahora." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT17",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Que tal una ultima cancion? Seria un placer." ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT18",
+      "box": "twins",
+      "boxAnimation": "talk-bf",
+      "speed": 0.05,
+      "text": [ "Beep!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT19",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Fantastico!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT20",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "E-espera. Aun tenemos que compartir microfonos? Era mucho mas facil cuando solo eramos... fantasmas-" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT21",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Oh! Necesitan un microfono?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT22",
+      "box": "twins",
+      "boxAnimation": "talk-gf",
+      "speed": 0.05,
+      "text": [ "Tengo uno de sobra!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT23",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Vaya, pero mira eso! Gracias, chica!!" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT24",
+      "box": "twins",
+      "boxAnimation": "talk-tanner",
+      "speed": 0.05,
+      "text": [ "Bueno, estamos listos?" ]
+    },
+    {
+      "speaker": "illustrious-speaker",
+      "speakerAnimation": "CUT25",
+      "box": "twins",
+      "boxAnimation": "talk-marie",
+      "speed": 0.05,
+      "text": [ "Es hora del show!!" ]
+    }
+  ]
+}

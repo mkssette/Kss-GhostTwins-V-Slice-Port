@@ -1,4 +1,6 @@
-class IllustriousConversation extends KssetteNovelDialogues {
+import doodleutil.dialogue.DoodleNovelDialogues;
+
+class IllustriousConversation extends DoodleNovelDialogues {
     public function new() {
         super('illustrious', null, {
             folder: "illustrious",
