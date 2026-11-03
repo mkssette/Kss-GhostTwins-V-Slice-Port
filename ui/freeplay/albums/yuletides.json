@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "name": "Yuletides (From Friday Night Funkin': Vs. Ghost Twins)",
+  "artists": ["Mike Geno"],
+  "albumArtAsset": "ui/freeplay/albums/yuletides",
+  "albumTitleAsset": "ui/freeplay/albums/yuletides-text"
+}

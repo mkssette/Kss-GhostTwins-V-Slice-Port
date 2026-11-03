@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="yuletides-title.png">
-	<!-- Created using the Spritesheet and XML generator -->
-	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="idle0000" x="0" y="103" width="221" height="103" frameX="-11" frameY="-21" frameWidth="236" frameHeight="142"/>
-	<SubTexture name="switch0000" x="0" y="0" width="221" height="103" frameX="-11" frameY="-21" frameWidth="236" frameHeight="142"/>
-</TextureAtlas>

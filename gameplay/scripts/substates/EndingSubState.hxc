@@ -1,0 +1,123 @@
+import flixel.FlxG;
+import funkin.graphics.FunkinCamera;
+import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import doodleutil.classes.DoodleUnlockAPI;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.ui.MusicBeatSubState;
+import funkin.graphics.FunkinSprite;
+import funkin.audio.FunkinSound;
+import funkin.util.TouchUtil;
+import funkin.Paths;
+
+class EndingSubState extends MusicBeatSubState {
+    var allowInput:Bool = false;
+    var rank:String;
+
+    public function new() { super(0xFF000000); }
+
+    override function create() {
+        super.create();
+
+        rank = DoodleUnlockAPI.getCurrentLevelRank();
+
+        var currentDiff = PlayStatePlaylist.campaignDifficulty;
+        var diffString:String = "UNKNOWN";
+
+        if (currentDiff == 'hard') {
+            diffString = "HARD";
+        }
+        if (currentDiff == 'echo') {
+            diffString = "HARD";
+        }
+        if (currentDiff == 'normal') {
+            diffString = "NORMAL";
+        }
+        if (currentDiff == 'easy') {
+            diffString = "NORMAL";
+        }
+
+        var combo:String = rank + "_" + diffString;
+        var isScuffle:Bool = (PlayState.instance.currentSong.id == 'scuffle');
+
+        var endingCam:FunkinCamera = new FunkinCamera("ghosttwins-ending");
+        endingCam.bgColor = 0x00000000; 
+        FlxG.cameras.add(endingCam);
+
+        var sprPath:String = 'ui/endings/bad'; 
+        var musicPath:String = Paths.music('ui/endings/funy'); 
+
+        if (isScuffle) {
+            switch(combo) {
+                case "PERFECT_GOLD_NORMAL": sprPath = 'ui/endings/neutral';
+                case "PERFECT_NORMAL":      sprPath = 'ui/endings/neutral';
+                case "EXCELLENT_NORMAL":    sprPath = 'ui/endings/neutral';
+                case "GREAT_NORMAL":        sprPath = 'ui/endings/neutral';
+
+                case "GOOD_HARD":           sprPath = 'ui/endings/neutral';
+
+                case "PERFECT_GOLD_HARD":   sprPath = 'ui/endings/neutral';
+                case "PERFECT_HARD":        sprPath = 'ui/endings/neutral';
+                case "EXCELLENT_HARD":      sprPath = 'ui/endings/neutral';
+                case "GREAT_HARD":          sprPath = 'ui/endings/neutral';
+
+
+                case "GOOD_NORMAL":
+                    sprPath = 'ui/endings/bad';
+
+                case "SHIT_NORMAL":
+                    sprPath = 'ui/endings/bad';
+                case "SHIT_HARD":
+                    sprPath = 'ui/endings/bad';
+
+                default:
+                    sprPath = 'ui/endings/bad';
+            }
+        } 
+        else {
+            if (rank == 'PERFECT_GOLD') sprPath = 'ui/endings/secs'; 
+            else sprPath = 'ui/endings/good';
+        }
+
+        var screen:FunkinSprite = FunkinSprite.create(0, 0, sprPath);
+        if (screen == null) {
+            trace("ERROR: Image not found -> " + sprPath);
+            screen = FunkinSprite.create(0, 0, 'ui/endings/bad');
+        }
+        screen.camera = endingCam;
+        screen.alpha = 0; 
+        screen.screenCenter(0x11);
+        add(screen);
+
+        var enterTxt:FlxText = new FlxText(0, 0, FlxG.width);
+        enterTxt.text = FlxG.onMobile ? 'Tap to continue' : 'Press Enter to continue';
+        enterTxt.setFormat(Paths.font('ui/fonts/VCR OSD Mono'), 30, 0xFFFFFFFF, 'right');
+        enterTxt.setPosition(FlxG.width - enterTxt.width - 10, FlxG.height - enterTxt.height - 30);
+        enterTxt.camera = endingCam;
+        enterTxt.alpha = 0;
+        add(enterTxt);
+
+        FlxTween.tween(screen, {alpha: 1}, 2, {onComplete: _ -> {
+            allowInput = true;
+            FlxTween.tween(enterTxt, {alpha: 1}, 1);
+        }});
+
+        if (musicPath != null) FlxG.sound.playMusic(musicPath, 1, false);
+    }
+
+    override function update(elapsed) {
+        super.update(elapsed);
+        if (!allowInput) return;
+        if (FlxG.onMobile) { if (TouchUtil.justPressed) closeEnding(); } 
+        else { if (controls.ACCEPT) closeEnding(); }
+    }
+
+    function closeEnding() {
+        if (PlayState.instance.currentSong.id == 'scuffle') {
+            PlayStatePlaylist.playlistSongIds = [];
+        }
+        close();
+        PlayState.instance.endSong();
+    }
+}
